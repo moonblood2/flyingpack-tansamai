@@ -1,0 +1,1 @@
+export const LABEL_ADD_PARCEL = "LABEL_ADD_PARCEL";
