@@ -1,0 +1,685 @@
+{
+    "type": 1,
+    "sender": {
+        "sender_type": 2,
+        "national_id_number": "0105553004666",
+        "passport_number": "",
+        "tax_id_number": "",
+        "birth_date": "2010-01-12",
+        "name": "บริษัท โรสโกลด์ (ไทยแลนด์) จำกัด",
+        "phone_number": "0949254495",
+        "address": "10/5 ถ.พระราม 2 (ซอย 30) แยก 3",
+        "district": "บางมด",
+        "state": "จอมทอง",
+        "province": "กรุงเทพมหานคร",
+        "postcode": "10150"
+    },
+    "parcels": [],
+    "an_parcels": [
+        {
+            "provider_code": 1,
+            "courier_code": "KRYP",
+            "enable_cod": false,
+            "cod_amount": 0,
+            "origin": {
+                "name": "บริษัท โรสโกลด์ (ไทยแลนด์) จำกัด",
+                "address": "10/5 ถ.พระราม 2 (ซอย 30) แยก 3",
+                "district": "บางมด",
+                "state": "จอมทอง",
+                "province": "กรุงเทพมหานคร",
+                "postcode": "10150",
+                "phone_number": "0949254495"
+            },
+            "destination": {
+                "name": "Ó©ÖÓ©©Ó©¬Ó©úÓ©▓ Ó©èÓ©╣Ó©öÓ©ºÓ©ç Ó©äÓ©¡Ó©Ñ1",
+                "address": "12/5 Ó©½Ó©íÓ©╣Ó╣ê7",
+                "district": "Ó╣üÓ©íÓ╣êÓ╣ÇÓ©êÓ╣ëÓ©▓Ó©¡Ó©óÓ©╣Ó╣êÓ©½Ó©▒Ó©º",
+                "state": "Ó╣ÇÓ©èÓ©ÁÓ©óÓ©úÓ╣âÓ©½Ó©ìÓ╣ê",
+                "province": "Ó©ÖÓ©äÓ©úÓ©¿Ó©úÓ©ÁÓ©ÿÓ©úÓ©úÓ©íÓ©úÓ©▓Ó©è",
+                "postcode": "80190",
+                "phone_number": "0993197141"
+            },
+            "parcel_shape": {
+                "weight": 1,
+                "width": 1,
+                "length": 1,
+                "height": 1
+            },
+            "an_order_id": "3dd25ec6-9432-4487-9b36-b1bf123573b3",
+            "an_order_items": [
+                {
+                    "product_code": "SAKANA_N",
+                    "serial_numbers": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "provider_code": 1,
+            "courier_code": "KRYP",
+            "enable_cod": false,
+            "cod_amount": 0,
+            "origin": {
+                "name": "บริษัท โรสโกลด์ (ไทยแลนด์) จำกัด",
+                "address": "10/5 ถ.พระราม 2 (ซอย 30) แยก 3",
+                "district": "บางมด",
+                "state": "จอมทอง",
+                "province": "กรุงเทพมหานคร",
+                "postcode": "10150",
+                "phone_number": "0949254495"
+            },
+            "destination": {
+                "name": "Ó©ÖÓ©▒Ó©ÉÓ©×Ó©Ñ  Ó©üÓ©┤Ó©òÓ©┤Ó©íÓ©¿Ó©▒Ó©üÓ©öÓ©┤Ó╣î Ó©äÓ©¡Ó©Ñ1",
+                "address": "Ó©úÓ©▒Ó©òÓ©ÖÓ©¬Ó©©Ó©éÓ╣üÓ©íÓ©ÖÓ©èÓ©▒Ó╣êÓ©Ö 3/940 Ó©ïÓ©¡Ó©ó Ó©×Ó©½Ó©ÑÓ╣éÓ©óÓ©ÿÓ©┤Ó©Ö 54",
+                "district": "Ó©äÓ©ÑÓ©¡Ó©çÓ©ûÓ©ÖÓ©Ö",
+                "state": "Ó©¬Ó©▓Ó©óÓ╣äÓ©½Ó©í",
+                "province": "Ó©üÓ©úÓ©©Ó©çÓ╣ÇÓ©ùÓ©×Ó©íÓ©½Ó©▓Ó©ÖÓ©äÓ©ú",
+                "postcode": "10220",
+                "phone_number": "0926688241"
+            },
+            "parcel_shape": {
+                "weight": 1,
+                "width": 1,
+                "length": 1,
+                "height": 1
+            },
+            "an_order_id": "db486b76-adfe-4f1b-b863-492822c7bea6",
+            "an_order_items": [
+                {
+                    "product_code": "SAKANA_N",
+                    "serial_numbers": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "provider_code": 1,
+            "courier_code": "FLE",
+            "enable_cod": false,
+            "cod_amount": 0,
+            "origin": {
+                "name": "บริษัท โรสโกลด์ (ไทยแลนด์) จำกัด",
+                "address": "10/5 ถ.พระราม 2 (ซอย 30) แยก 3",
+                "district": "บางมด",
+                "state": "จอมทอง",
+                "province": "กรุงเทพมหานคร",
+                "postcode": "10150",
+                "phone_number": "0949254495"
+            },
+            "destination": {
+                "name": "Ó©Ö.Ó©¬.Ó©üÓ©ÖÓ©üÓ╣üÓ©üÓ╣ëÓ©º Ó©ÜÓ©©Ó©ìÓ©øÓ©úÓ©©Ó©ç",
+                "address": "090-9856385\r Ó©ÜÓ╣ëÓ©▓Ó©ÖÓ╣ÇÓ©ÑÓ©éÓ©ùÓ©ÁÓ╣ê 2 Ó©½Ó©íÓ©╣Ó╣ê 7 Ó©ÜÓ╣ëÓ©▓Ó©ÖÓ©óÓ©▓Ó©çÓ©èÓ╣ëÓ©▓",
+                "district": "Ó©¡Ó©│Ó©ÖÓ©▓Ó©ê",
+                "state": "Ó©ÑÓ©ÀÓ©¡Ó©¡Ó©│Ó©ÖÓ©▓Ó©ê",
+                "province": "Ó©¡Ó©│Ó©ÖÓ©▓Ó©êÓ╣ÇÓ©êÓ©úÓ©┤Ó©ì",
+                "postcode": "37120",
+                "phone_number": "0909856385"
+            },
+            "parcel_shape": {
+                "weight": 1,
+                "width": 1,
+                "length": 1,
+                "height": 1
+            },
+            "an_order_id": "74b4a59e-6599-46e4-810f-9cbef732cf3a",
+            "an_order_items": [
+                {
+                    "product_code": "SAKANA_N",
+                    "serial_numbers": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "provider_code": 1,
+            "courier_code": "KRYP",
+            "enable_cod": true,
+            "cod_amount": 1080,
+            "origin": {
+                "name": "บริษัท โรสโกลด์ (ไทยแลนด์) จำกัด",
+                "address": "10/5 ถ.พระราม 2 (ซอย 30) แยก 3",
+                "district": "บางมด",
+                "state": "จอมทอง",
+                "province": "กรุงเทพมหานคร",
+                "postcode": "10150",
+                "phone_number": "0949254495"
+            },
+            "destination": {
+                "name": "Ó©½Ó©ÖÓ©ÂÓ╣êÓ©çÓ©ñÓ©öÓ©Á Ó©×Ó©┤Ó©íÓ©¬Ó©┤Ó©í ",
+                "address": "155  Ó©í.8",
+                "district": "Ó©öÓ©¡Ó©ÖÓ╣ÇÓ©íÓ©ÀÓ©¡Ó©ç",
+                "state": "Ó©¬Ó©ÁÓ©äÓ©┤Ó╣ëÓ©º",
+                "province": "Ó©ÖÓ©äÓ©úÓ©úÓ©▓Ó©èÓ©¬Ó©ÁÓ©íÓ©▓",
+                "postcode": "30140",
+                "phone_number": "0984352900"
+            },
+            "parcel_shape": {
+                "weight": 1,
+                "width": 1,
+                "length": 1,
+                "height": 1
+            },
+            "an_order_id": "b3406939-8764-4c35-8656-23c6d61a9dba",
+            "an_order_items": [
+                {
+                    "product_code": "SAKANA_N",
+                    "serial_numbers": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "provider_code": 1,
+            "courier_code": "KRYP",
+            "enable_cod": false,
+            "cod_amount": 0,
+            "origin": {
+                "name": "บริษัท โรสโกลด์ (ไทยแลนด์) จำกัด",
+                "address": "10/5 ถ.พระราม 2 (ซอย 30) แยก 3",
+                "district": "บางมด",
+                "state": "จอมทอง",
+                "province": "กรุงเทพมหานคร",
+                "postcode": "10150",
+                "phone_number": "0949254495"
+            },
+            "destination": {
+                "name": "Ó©¡Ó©öÓ©┤Ó©ÖÓ©▒Ó©ÖÓ©ùÓ╣î Ó©òÓ©▒Ó©ÖÓ©ÿÓ©ÖÓ©░",
+                "address": "367 Ó©í.16",
+                "district": "Ó╣üÓ©íÓ╣êÓ©¬Ó©╣Ó©Ö",
+                "state": "Ó©ØÓ©▓Ó©ç",
+                "province": "Ó╣ÇÓ©èÓ©ÁÓ©óÓ©çÓ╣âÓ©½Ó©íÓ╣ê",
+                "postcode": "50110",
+                "phone_number": "0815313555"
+            },
+            "parcel_shape": {
+                "weight": 1,
+                "width": 1,
+                "length": 1,
+                "height": 1
+            },
+            "an_order_id": "1e539e08-0356-4903-b60f-87b9e4cb5d48",
+            "an_order_items": [
+                {
+                    "product_code": "SAKANA_N",
+                    "serial_numbers": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "provider_code": 1,
+            "courier_code": "KRYP",
+            "enable_cod": false,
+            "cod_amount": 0,
+            "origin": {
+                "name": "บริษัท โรสโกลด์ (ไทยแลนด์) จำกัด",
+                "address": "10/5 ถ.พระราม 2 (ซอย 30) แยก 3",
+                "district": "บางมด",
+                "state": "จอมทอง",
+                "province": "กรุงเทพมหานคร",
+                "postcode": "10150",
+                "phone_number": "0949254495"
+            },
+            "destination": {
+                "name": "Ó©äÓ©©Ó©ôÓ©×Ó©êÓ©ÖÓ╣îÓ©ÖÓ©Á Ó╣üÓ©üÓ©ÑÓ╣ëÓ©ºÓ©üÓ©ÑÓ╣ëÓ©▓",
+                "address": "380/54 Ó©½Ó©íÓ©╣Ó╣êÓ©ÜÓ╣ëÓ©▓Ó©ÖÓ╣éÓ©üÓ©ÑÓ╣ÇÓ©öÓ╣ëÓ©ÖÓ©ùÓ╣îÓ©ùÓ©▓Ó©ºÓ©ÖÓ╣î3 (Ó©ÜÓ©▓Ó©çÓ©ÖÓ©▓-Ó©¬Ó©ºÓ©ÖÓ©½Ó©ÑÓ©ºÓ©ç)  \r Ó©ïÓ©¡Ó©ó3 Ó©ûÓ©ÖÓ©ÖÓ©üÓ©▓Ó©ìÓ©êÓ©ÖÓ©▓Ó©áÓ©┤Ó╣ÇÓ©®Ó©ü",
+                "district": "Ó©öÓ©¡Ó©üÓ╣äÓ©íÓ╣ë",
+                "state": "Ó©øÓ©úÓ©░Ó╣ÇÓ©ºÓ©¿",
+                "province": "Ó©üÓ©úÓ©©Ó©çÓ╣ÇÓ©ùÓ©×Ó©íÓ©½Ó©▓Ó©ÖÓ©äÓ©ú",
+                "postcode": "10250",
+                "phone_number": "0882284925"
+            },
+            "parcel_shape": {
+                "weight": 1,
+                "width": 1,
+                "length": 1,
+                "height": 1
+            },
+            "an_order_id": "c010e6e2-33a1-46da-a61f-c8cec1c1cc4a",
+            "an_order_items": [
+                {
+                    "product_code": "SAKANA_N",
+                    "serial_numbers": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "provider_code": 1,
+            "courier_code": "KRYP",
+            "enable_cod": false,
+            "cod_amount": 0,
+            "origin": {
+                "name": "บริษัท โรสโกลด์ (ไทยแลนด์) จำกัด",
+                "address": "10/5 ถ.พระราม 2 (ซอย 30) แยก 3",
+                "district": "บางมด",
+                "state": "จอมทอง",
+                "province": "กรุงเทพมหานคร",
+                "postcode": "10150",
+                "phone_number": "0949254495"
+            },
+            "destination": {
+                "name": "Ó╣ÇÓ©¡Ó©üÓ©øÓ©ºÓ©ÁÓ©óÓ╣î Ó©óÓ©ÀÓ©ÖÓ©óÓ©┤Ó╣êÓ©ç",
+                "address": "Ó©½Ó©¡Ó©×Ó©▒Ó©ütudio Ó©¡Ó©▓Ó©äÓ©▓Ó©ú3 Ó©½Ó╣ëÓ©¡Ó©ç3406 Ó╣ÇÓ©ÑÓ©éÓ©ùÓ©ÁÓ╣ê 88/88 Ó©½Ó©íÓ©╣Ó╣ê 8 Ó©ûÓ©ÖÓ©ÖÓ╣ÇÓ©èÓ©ÁÓ©óÓ©çÓ©úÓ©▓Ó©üÓ©ÖÓ╣ëÓ©¡Ó©ó",
+                "district": "Ó©äÓ©ÑÓ©¡Ó©çÓ©½Ó©ÖÓ©ÂÓ╣êÓ©ç",
+                "state": "Ó©äÓ©ÑÓ©¡Ó©çÓ©½Ó©ÑÓ©ºÓ©ç",
+                "province": "Ó©øÓ©ùÓ©©Ó©íÓ©ÿÓ©▓Ó©ÖÓ©Á",
+                "postcode": "12120",
+                "phone_number": "0907285192"
+            },
+            "parcel_shape": {
+                "weight": 1,
+                "width": 1,
+                "length": 1,
+                "height": 1
+            },
+            "an_order_id": "d1e1c13d-6a6d-4a59-ab3f-bf0a7cf0ca81",
+            "an_order_items": [
+                {
+                    "product_code": "SAKANA_N",
+                    "serial_numbers": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "provider_code": 1,
+            "courier_code": "KRYP",
+            "enable_cod": false,
+            "cod_amount": 0,
+            "origin": {
+                "name": "บริษัท โรสโกลด์ (ไทยแลนด์) จำกัด",
+                "address": "10/5 ถ.พระราม 2 (ซอย 30) แยก 3",
+                "district": "บางมด",
+                "state": "จอมทอง",
+                "province": "กรุงเทพมหานคร",
+                "postcode": "10150",
+                "phone_number": "0949254495"
+            },
+            "destination": {
+                "name": "Ó©ÿÓ©ÁÓ©úÓ©óÓ©©Ó©ùÓ©ÿ Ó©ÑÓ©ºÓ©öÓ©éÓ©▓Ó©º",
+                "address": "141 Ó©½Ó©íÓ©╣Ó╣ê 1",
+                "district": "Ó╣üÓ©íÓ╣êÓ©øÓ©╣Ó©äÓ©▓",
+                "state": "Ó©¬Ó©▒Ó©ÖÓ©üÓ©│Ó╣üÓ©×Ó©ç",
+                "province": "Ó╣ÇÓ©èÓ©ÁÓ©óÓ©çÓ╣âÓ©½Ó©íÓ╣ê",
+                "postcode": "50130",
+                "phone_number": "0876832935"
+            },
+            "parcel_shape": {
+                "weight": 1,
+                "width": 1,
+                "length": 1,
+                "height": 1
+            },
+            "an_order_id": "65c9464f-5b0f-4422-bc89-6165fb59fd76",
+            "an_order_items": [
+                {
+                    "product_code": "SAKANA_N",
+                    "serial_numbers": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "provider_code": 1,
+            "courier_code": "KRYP",
+            "enable_cod": false,
+            "cod_amount": 0,
+            "origin": {
+                "name": "บริษัท โรสโกลด์ (ไทยแลนด์) จำกัด",
+                "address": "10/5 ถ.พระราม 2 (ซอย 30) แยก 3",
+                "district": "บางมด",
+                "state": "จอมทอง",
+                "province": "กรุงเทพมหานคร",
+                "postcode": "10150",
+                "phone_number": "0949254495"
+            },
+            "destination": {
+                "name": "Ó©¡Ó©áÓ©┤Ó©èÓ©▓Ó©òÓ©┤ Ó©×Ó©ÑÓ©úÓ©▒Ó©üÓ©®Ó©▓",
+                "address": "38/288 Ó©ÑÓ©▓Ó©öÓ©×Ó©úÓ╣ëÓ©▓Ó©º47",
+                "district": "Ó©¬Ó©░Ó©×Ó©▓Ó©ÖÓ©¬Ó©¡Ó©ç",
+                "state": "Ó©ºÓ©▒Ó©çÓ©ùÓ©¡Ó©çÓ©½Ó©ÑÓ©▓Ó©ç",
+                "province": "Ó©üÓ©úÓ©©Ó©çÓ╣ÇÓ©ùÓ©×Ó©íÓ©½Ó©▓Ó©ÖÓ©äÓ©ú",
+                "postcode": "10310",
+                "phone_number": "0629627222"
+            },
+            "parcel_shape": {
+                "weight": 1,
+                "width": 1,
+                "length": 1,
+                "height": 1
+            },
+            "an_order_id": "05f1d967-b3d2-465e-b40a-695fd16d5dd3",
+            "an_order_items": [
+                {
+                    "product_code": "SAKANA_N",
+                    "serial_numbers": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "provider_code": 1,
+            "courier_code": "KRYP",
+            "enable_cod": false,
+            "cod_amount": 0,
+            "origin": {
+                "name": "บริษัท โรสโกลด์ (ไทยแลนด์) จำกัด",
+                "address": "10/5 ถ.พระราม 2 (ซอย 30) แยก 3",
+                "district": "บางมด",
+                "state": "จอมทอง",
+                "province": "กรุงเทพมหานคร",
+                "postcode": "10150",
+                "phone_number": "0949254495"
+            },
+            "destination": {
+                "name": "Ó©øÓ©ôÓ©▒Ó©ÅÓ©ÉÓ╣îÓ©¬Ó©úÓ©ôÓ╣î Ó©ÑÓ©▓Ó©áÓ╣ÇÓ©êÓ©úÓ©┤Ó©ìÓ©ºÓ©çÓ©¿Ó╣î",
+                "address": "Ó©üÓ©▓Ó©úÓ╣äÓ©ƒÓ©ƒÓ╣ëÓ©▓Ó©¬Ó╣êÓ©ºÓ©ÖÓ©áÓ©╣Ó©íÓ©┤Ó©áÓ©▓Ó©ä \r 160/6 Ó©í.1 Ó©ò.Ó©ùÓ╣êÓ©▓Ó©éÓ©ÖÓ©©Ó©Ö Ó©¡.Ó©ùÓ©¡Ó©çÓ©£Ó©▓Ó©áÓ©╣Ó©íÓ©┤ Ó©ê.Ó©üÓ©▓Ó©ìÓ©êÓ©ÖÓ©ÜÓ©©Ó©úÓ©Á 71180",
+                "district": "Ó©ùÓ╣êÓ©▓Ó©éÓ©ÖÓ©©Ó©Ö",
+                "state": "Ó©ùÓ©¡Ó©çÓ©£Ó©▓Ó©áÓ©╣Ó©íÓ©┤",
+                "province": "Ó©üÓ©▓Ó©ìÓ©êÓ©ÖÓ©ÜÓ©©Ó©úÓ©Á",
+                "postcode": "71180",
+                "phone_number": "0877871791"
+            },
+            "parcel_shape": {
+                "weight": 1,
+                "width": 1,
+                "length": 1,
+                "height": 1
+            },
+            "an_order_id": "cb4721ca-0464-40bf-83d4-aa921e35bd05",
+            "an_order_items": [
+                {
+                    "product_code": "SAKANA_N",
+                    "serial_numbers": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "provider_code": 1,
+            "courier_code": "KRYP",
+            "enable_cod": false,
+            "cod_amount": 0,
+            "origin": {
+                "name": "บริษัท โรสโกลด์ (ไทยแลนด์) จำกัด",
+                "address": "10/5 ถ.พระราม 2 (ซอย 30) แยก 3",
+                "district": "บางมด",
+                "state": "จอมทอง",
+                "province": "กรุงเทพมหานคร",
+                "postcode": "10150",
+                "phone_number": "0949254495"
+            },
+            "destination": {
+                "name": "Ó©ÿÓ©ÖÓ©×Ó©çÓ©®Ó╣î Ó©¡Ó©ÖÓ©▒Ó©ÖÓ©òÓ©▒Ó©ÖÓ©òÓ©┤Ó©üÓ©©Ó©Ñ",
+                "address": "(Ó©üÓ©úÓ©©Ó©ôÓ©▓Ó©ØÓ©▓Ó©üÓ©×Ó©▒Ó©¬Ó©öÓ©©Ó©ùÓ©ÁÓ╣êÓ©øÓ╣ëÓ©¡Ó©í Ó©úÓ©øÓ©áÓ©½Ó©íÓ©╣Ó╣êÓ©ÜÓ╣ëÓ©▓Ó©Ö)\r 64/115 Ó©ÜÓ╣ëÓ©▓Ó©ÖÓ©üÓ©ÑÓ©▓Ó©çÓ╣ÇÓ©íÓ©ÀÓ©¡Ó©çÓ╣éÓ©èÓ©äÓ©èÓ©▒Ó©ó4 Ó©ïÓ©¡Ó©ó 50 Ó©ûÓ©ÖÓ©ÖÓ╣éÓ©èÓ©äÓ©èÓ©▒Ó©ó4",
+                "district": "Ó©ÑÓ©▓Ó©öÓ©×Ó©úÓ╣ëÓ©▓Ó©º",
+                "state": "Ó©ÑÓ©▓Ó©öÓ©×Ó©úÓ╣ëÓ©▓Ó©º",
+                "province": "Ó©üÓ©úÓ©©Ó©çÓ╣ÇÓ©ùÓ©×Ó©íÓ©½Ó©▓Ó©ÖÓ©äÓ©ú",
+                "postcode": "10230",
+                "phone_number": "0819582677"
+            },
+            "parcel_shape": {
+                "weight": 1,
+                "width": 1,
+                "length": 1,
+                "height": 1
+            },
+            "an_order_id": "54fe8980-f770-467b-be90-74fd8c5c5b4c",
+            "an_order_items": [
+                {
+                    "product_code": "SAKANA_N",
+                    "serial_numbers": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "provider_code": 1,
+            "courier_code": "KRYP",
+            "enable_cod": false,
+            "cod_amount": 0,
+            "origin": {
+                "name": "บริษัท โรสโกลด์ (ไทยแลนด์) จำกัด",
+                "address": "10/5 ถ.พระราม 2 (ซอย 30) แยก 3",
+                "district": "บางมด",
+                "state": "จอมทอง",
+                "province": "กรุงเทพมหานคร",
+                "postcode": "10150",
+                "phone_number": "0949254495"
+            },
+            "destination": {
+                "name": "Ó©äÓ©©Ó©ô Ó©éÓ©ºÓ©▒Ó©ìÓ©òÓ©▓ Ó©êÓ©▒Ó©ÖÓ©ùÓ©░Ó©äÓ©╣Ó©ô",
+                "address": "29/254 BTS Residence Condo Ó©èÓ©▒Ó╣ëÓ©Ö 21 Ó©û. Ó©ºÓ©┤Ó©áÓ©▓Ó©ºÓ©öÓ©ÁÓ©úÓ©▒Ó©çÓ©¬Ó©┤Ó©ò",
+                "district": "Ó©êÓ©¡Ó©íÓ©×Ó©Ñ",
+                "state": "Ó©êÓ©òÓ©©Ó©êÓ©▒Ó©üÓ©ú",
+                "province": "Ó©üÓ©úÓ©©Ó©çÓ╣ÇÓ©ùÓ©×Ó©íÓ©½Ó©▓Ó©ÖÓ©äÓ©ú",
+                "postcode": "10900",
+                "phone_number": "0935099335"
+            },
+            "parcel_shape": {
+                "weight": 1,
+                "width": 1,
+                "length": 1,
+                "height": 1
+            },
+            "an_order_id": "5597c216-9754-4702-83de-55740bdc07de",
+            "an_order_items": [
+                {
+                    "product_code": "SAKANA_N",
+                    "serial_numbers": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "provider_code": 1,
+            "courier_code": "KRYP",
+            "enable_cod": true,
+            "cod_amount": 1080,
+            "origin": {
+                "name": "บริษัท โรสโกลด์ (ไทยแลนด์) จำกัด",
+                "address": "10/5 ถ.พระราม 2 (ซอย 30) แยก 3",
+                "district": "บางมด",
+                "state": "จอมทอง",
+                "province": "กรุงเทพมหานคร",
+                "postcode": "10150",
+                "phone_number": "0949254495"
+            },
+            "destination": {
+                "name": "Ó©üÓ©ÖÓ©üÓ©×Ó©úÓ©úÓ©ô Ó╣ÇÓ©½Ó©íÓ©ÀÓ©¡Ó©ÖÓ╣ÇÓ©×Ó╣çÓ©èÓ©ú",
+                "address": "180/407 Ó©½Ó©íÓ©╣Ó╣ê.5",
+                "district": "Ó©ÜÓ╣ëÓ©▓Ó©ÖÓ©ëÓ©▓Ó©ç",
+                "state": "Ó©ÜÓ╣ëÓ©▓Ó©ÖÓ©ëÓ©▓Ó©ç",
+                "province": "Ó©úÓ©░Ó©óÓ©¡Ó©ç",
+                "postcode": "21130",
+                "phone_number": "0830911805"
+            },
+            "parcel_shape": {
+                "weight": 1,
+                "width": 1,
+                "length": 1,
+                "height": 1
+            },
+            "an_order_id": "212e1a8f-5e20-45b5-9089-c33312e4ca29",
+            "an_order_items": [
+                {
+                    "product_code": "SAKANA_N",
+                    "serial_numbers": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "provider_code": 1,
+            "courier_code": "KRYP",
+            "enable_cod": false,
+            "cod_amount": 0,
+            "origin": {
+                "name": "บริษัท โรสโกลด์ (ไทยแลนด์) จำกัด",
+                "address": "10/5 ถ.พระราม 2 (ซอย 30) แยก 3",
+                "district": "บางมด",
+                "state": "จอมทอง",
+                "province": "กรุงเทพมหานคร",
+                "postcode": "10150",
+                "phone_number": "0949254495"
+            },
+            "destination": {
+                "name": "Ó©ÖÓ©▒Ó©ÖÓ©ùÓ©úÓ©▒Ó©òÓ©íÓ╣î Ó©üÓ©¡Ó©ÜÓ©¬Ó©©Ó©éÓ©ÖÓ©┤Ó©úÓ©▒Ó©ÖÓ©öÓ©úÓ╣î",
+                "address": "(Ó©úÓ╣ëÓ©▓Ó©ÖÓ©üÓ©¡Ó©ÜÓ©¬Ó©©Ó©é) 60 Ó©í.8 Ó©ûÓ©ÖÓ©ÖÓ╣ÇÓ©¬Ó©úÓ©ÁÓ©øÓ©úÓ©░Ó©èÓ©▓",
+                "district": "Ó╣éÓ©èÓ©äÓ©èÓ©▒Ó©ó",
+                "state": "Ó╣éÓ©èÓ©äÓ©èÓ©▒Ó©ó",
+                "province": "Ó©ÖÓ©äÓ©úÓ©úÓ©▓Ó©èÓ©¬Ó©ÁÓ©íÓ©▓",
+                "postcode": "30190",
+                "phone_number": "0852414282"
+            },
+            "parcel_shape": {
+                "weight": 1,
+                "width": 1,
+                "length": 1,
+                "height": 1
+            },
+            "an_order_id": "5eafa8ce-65ca-4d99-8007-b9bf52b8f5dd",
+            "an_order_items": [
+                {
+                    "product_code": "SAKANA_N",
+                    "serial_numbers": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "provider_code": 1,
+            "courier_code": "KRYP",
+            "enable_cod": false,
+            "cod_amount": 0,
+            "origin": {
+                "name": "บริษัท โรสโกลด์ (ไทยแลนด์) จำกัด",
+                "address": "10/5 ถ.พระราม 2 (ซอย 30) แยก 3",
+                "district": "บางมด",
+                "state": "จอมทอง",
+                "province": "กรุงเทพมหานคร",
+                "postcode": "10150",
+                "phone_number": "0949254495"
+            },
+            "destination": {
+                "name": "Ó©¿Ó©┤Ó©úÓ©áÓ©▒Ó©¬Ó©¬Ó©ú Ó╣âÓ©êÓ╣üÓ©øÓ©ç ",
+                "address": "SJD MANSION (Ó╣âÓ©½Ó©íÓ╣ê) (Ó©òÓ©ÂÓ©üG206)Ó©½Ó©íÓ©╣Ó╣ê1 Ó©òÓ©│Ó©ÜÓ©ÑÓ©ùÓ╣êÓ©▓Ó©¬´┐¢´┐¢´┐¢Ó©ö Ó©¡Ó©│Ó╣ÇÓ©áÓ©¡Ó╣ÇÓ©íÓ©ÀÓ©¡Ó©çÓ╣ÇÓ©èÓ©ÁÓ©óÓ©çÓ©úÓ©▓Ó©ó Ó©êÓ©▒Ó©çÓ©½Ó©ºÓ©▒Ó©öÓ╣ÇÓ©èÓ©ÁÓ©óÓ©çÓ©úÓ©▓Ó©ó 57100",
+                "district": "Ó©ùÓ╣êÓ©▓Ó©¬Ó©©Ó©ö",
+                "state": "Ó╣ÇÓ©íÓ©ÀÓ©¡Ó©çÓ╣ÇÓ©èÓ©ÁÓ©óÓ©çÓ©úÓ©▓Ó©ó",
+                "province": "Ó╣ÇÓ©èÓ©ÁÓ©óÓ©çÓ©úÓ©▓Ó©ó",
+                "postcode": "57100",
+                "phone_number": "0620275873"
+            },
+            "parcel_shape": {
+                "weight": 1,
+                "width": 1,
+                "length": 1,
+                "height": 1
+            },
+            "an_order_id": "ebf6e614-e8c9-4573-ae83-0a7e14eed25e",
+            "an_order_items": [
+                {
+                    "product_code": "SAKANA_N",
+                    "serial_numbers": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "provider_code": 1,
+            "courier_code": "KRYP",
+            "enable_cod": false,
+            "cod_amount": 0,
+            "origin": {
+                "name": "บริษัท โรสโกลด์ (ไทยแลนด์) จำกัด",
+                "address": "10/5 ถ.พระราม 2 (ซอย 30) แยก 3",
+                "district": "บางมด",
+                "state": "จอมทอง",
+                "province": "กรุงเทพมหานคร",
+                "postcode": "10150",
+                "phone_number": "0949254495"
+            },
+            "destination": {
+                "name": "Ó©øÓ©úÓ©░Ó©áÓ©▒Ó©¬Ó©¬Ó©ú Ó©óÓ©▒Ó©çÓ©íÓ©ÁÓ©íÓ©▓ Ó©äÓ©¡Ó©Ñ1",
+                "address": "21/55 Ó©í.3",
+                "district": "Ó©ÑÓ©│Ó©£Ó©▒Ó©üÓ©üÓ©╣Ó©ö",
+                "state": "Ó©ÿÓ©▒Ó©ìÓ©ÜÓ©©Ó©úÓ©Á",
+                "province": "Ó©øÓ©ùÓ©©Ó©íÓ©ÿÓ©▓Ó©ÖÓ©Á",
+                "postcode": "12110",
+                "phone_number": "0984402954"
+            },
+            "parcel_shape": {
+                "weight": 1,
+                "width": 1,
+                "length": 1,
+                "height": 1
+            },
+            "an_order_id": "c0377666-2efe-4e8c-a2cb-76a755a68057",
+            "an_order_items": [
+                {
+                    "product_code": "SAKANA_N",
+                    "serial_numbers": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "provider_code": 1,
+            "courier_code": "KRYP",
+            "enable_cod": false,
+            "cod_amount": 0,
+            "origin": {
+                "name": "บริษัท โรสโกลด์ (ไทยแลนด์) จำกัด",
+                "address": "10/5 ถ.พระราม 2 (ซอย 30) แยก 3",
+                "district": "บางมด",
+                "state": "จอมทอง",
+                "province": "กรุงเทพมหานคร",
+                "postcode": "10150",
+                "phone_number": "0949254495"
+            },
+            "destination": {
+                "name": "Ó©¬Ó©©Ó©áÓ©▓Ó©üÓ©▓Ó©ìÓ©êÓ©ÖÓ╣î Ó©òÓ©ÑÓ©▓Ó©öÓ©éÓ©ºÓ©▒Ó©ì Ó©äÓ©¡Ó©Ñ1",
+                "address": "190/191 Ó©èÓ©▓Ó╣éÓ©òÓ©ºÓ╣îÓ©¡Ó©┤Ó©ÖÓ©ùÓ©▓Ó©ºÓ©ÖÓ╣î2 Ó©ïÓ©¡Ó©óÓ©×Ó©½Ó©ÑÓ╣éÓ©óÓ©ÿÓ©┤Ó©Ö30(Ó©ïÓ©¡Ó©óÓ©¡Ó©▓Ó©ÑÓ©▓Ó©öÓ©┤Ó©Ö)",
+                "district": "Ó©êÓ©▒Ó©ÖÓ©ùÓ©úÓ╣ÇÓ©üÓ©®Ó©í",
+                "state": "Ó©êÓ©òÓ©©Ó©êÓ©▒Ó©üÓ©ú",
+                "province": "Ó©üÓ©úÓ©©Ó©çÓ╣ÇÓ©ùÓ©×Ó©íÓ©½Ó©▓Ó©ÖÓ©äÓ©ú",
+                "postcode": "10900",
+                "phone_number": "0967956564"
+            },
+            "parcel_shape": {
+                "weight": 1,
+                "width": 1,
+                "length": 1,
+                "height": 1
+            },
+            "an_order_id": "b03a94dc-f199-4881-adea-9c2b620106a5",
+            "an_order_items": [
+                {
+                    "product_code": "SAKANA_N",
+                    "serial_numbers": [
+                        ""
+                    ]
+                }
+            ]
+        }
+    ],
+    "products": [],
+    "payment_method": 1
+}
