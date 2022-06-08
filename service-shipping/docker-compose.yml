@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+  postgres:
+    container_name: shipping-postgres
+    image: postgres:13.2
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-q", "-d", "postgres", "-U", "root" ]
+      timeout: 45s
+      interval: 10s
+      retries: 10
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=postgres
+    ports:
+      - "9000:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data/
+volumes:
+  pg_data:

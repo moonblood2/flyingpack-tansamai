@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Flash Express (Shippop)",
+    "logo": "https://www.flashexpress.co.th/_nuxt/img/flashexpress@2x.aecc8d9.png",
+    "provider_code": 1,
+    "courier_code": "FLE",
+    "enable_cod": false
+  },
+  {
+    "name": "Flash Express COD (Shippop)",
+    "logo": "https://www.flashexpress.co.th/_nuxt/img/flashexpress@2x.aecc8d9.png",
+    "provider_code": 1,
+    "courier_code": "FLE",
+    "enable_cod": true
+  },
+  {
+    "name": "Kerry Express (Shippop)",
+    "logo": "https://th.kerryexpress.com/en/img/header/logo.png",
+    "provider_code": 1,
+    "courier_code": "KRYP",
+    "enable_cod": false
+  },
+  {
+    "name": "Kerry Express COD (Shippop)",
+    "logo": "https://th.kerryexpress.com/en/img/header/logo.png",
+    "provider_code": 1,
+    "courier_code": "KRYP",
+    "enable_cod": true
+  },
+  {
+    "name": "SCG Yamato Express (Shippop)",
+    "logo": "https://www.scgexpress.co.th/theme/images/logo-scg-express.png",
+    "provider_code": 1,
+    "courier_code": "SCG",
+    "enable_cod": false
+  },
+  {
+    "name": "SCG Yamato Express COD (Shippop)",
+    "logo": "https://www.scgexpress.co.th/theme/images/logo-scg-express.png",
+    "provider_code": 1,
+    "courier_code": "SCG",
+    "enable_cod": true
+  },
+  {
+    "name": "ไปรษณีย์ไทย EMS (Shippop)",
+    "logo": "https://firebasestorage.googleapis.com/v0/b/pop-shippop.appspot.com/o/icon%2FTHP.png?alt=media&token=91c417ce-24bf-4b07-b9d7-c7a30294f833",
+    "provider_code": 1,
+    "courier_code": "EMST",
+    "enable_cod": false
+  },
+  {
+    "name": "ไปรษณีย์ไทย EMS COD (Shippop)",
+    "logo": "https://firebasestorage.googleapis.com/v0/b/pop-shippop.appspot.com/o/icon%2FTHP.png?alt=media&token=91c417ce-24bf-4b07-b9d7-c7a30294f833",
+    "provider_code": 1,
+    "courier_code": "EMST",
+    "enable_cod": true
+  }
+]
