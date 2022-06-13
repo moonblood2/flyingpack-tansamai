@@ -1,0 +1,1141 @@
+{
+	"info": {
+		"_postman_id": "2361c2e5-bdc2-464e-894c-14d3a4c5b547",
+		"name": "ShippopBusiness",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Production",
+			"item": [
+				{
+					"name": "COD Member",
+					"item": [
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"api_key\": \"e7672f8b5c520d05c71cd4e0cc6d4de1cb9d429d\",\r\n\t\"name_title\": \"MR\",\r\n\t\"name\": \"JNA Distribution\",\r\n\t\"email\": \"acc.jna@gmail.com\",\r\n\t\"tax_id\": \"2425114889551\",\r\n\t\"address\": \"JNA Distribution Co.,LTD 10/5 ถ.พระราม 2 (ซอย 30) แยก 3 แขวง บางมด เขต จอมทอง กทม. 10150\",\r\n\t\"phone\": \"0982892298\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://mkpservice.shippop.com/register/",
+									"protocol": "http",
+									"host": [
+										"mkpservice",
+										"shippop",
+										"com"
+									],
+									"path": [
+										"register",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateMemberIdentity",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "api_key",
+											"value": "e7672f8b5c520d05c71cd4e0cc6d4de1cb9d429d",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "acc.jna@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "data[tax_id]",
+											"value": "2425114889551",
+											"type": "text"
+										},
+										{
+											"key": "data[files][]",
+											"type": "file",
+											"src": "/C:/Users/60010890/Desktop/jna/service-shipping/shippop/cod/idcard.jpg"
+										},
+										{
+											"key": "data[files][]",
+											"type": "file",
+											"src": "/C:/Users/60010890/Desktop/jna/service-shipping/shippop/cod/idcard.jpg"
+										},
+										{
+											"key": "data[files][]",
+											"type": "file",
+											"src": "/C:/Users/60010890/Desktop/jna/service-shipping/shippop/cod/idcard.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://mkpservice.shippop.com/identity/create/",
+									"protocol": "https",
+									"host": [
+										"mkpservice",
+										"shippop",
+										"com"
+									],
+									"path": [
+										"identity",
+										"create",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FetchMemberIdentity",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "api_key",
+											"value": "e7672f8b5c520d05c71cd4e0cc6d4de1cb9d429d",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "acc.jna@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://mkpservice.shippop.dev/identity/fetch/",
+									"protocol": "https",
+									"host": [
+										"mkpservice",
+										"shippop",
+										"dev"
+									],
+									"path": [
+										"identity",
+										"fetch",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateBankAccount",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "api_key",
+											"value": "e7672f8b5c520d05c71cd4e0cc6d4de1cb9d429d",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "acc.jna@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "data[account_name]",
+											"value": "บจก. เจเอ็นเอ ดิสทริบิวชั่น",
+											"type": "text"
+										},
+										{
+											"key": "data[account_id]",
+											"value": "0738459776",
+											"type": "text"
+										},
+										{
+											"key": "data[account_bank]",
+											"value": "004",
+											"type": "text"
+										},
+										{
+											"key": "data[account_branch]",
+											"value": "สาขาเอ็มควอเทียร์",
+											"type": "text"
+										},
+										{
+											"key": "data[branch_code]",
+											"value": "100",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "data[image_book]",
+											"type": "file",
+											"src": "/C:/Users/60010890/Desktop/jna/service-shipping/shippop/cod/book_bank.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://mkpservice.shippop.com/bank/create/",
+									"protocol": "https",
+									"host": [
+										"mkpservice",
+										"shippop",
+										"com"
+									],
+									"path": [
+										"bank",
+										"create",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FetchBankAccount",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "api_key",
+											"value": "e7672f8b5c520d05c71cd4e0cc6d4de1cb9d429d",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "acc.jna@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://mkpservice.shippop.com/bank/fetch/",
+									"protocol": "https",
+									"host": [
+										"mkpservice",
+										"shippop",
+										"com"
+									],
+									"path": [
+										"bank",
+										"fetch",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FetchMember",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "api_key",
+											"value": "e7672f8b5c520d05c71cd4e0cc6d4de1cb9d429d",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "acc.jna@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://mkpservice.shippop.com/member/",
+									"protocol": "https",
+									"host": [
+										"mkpservice",
+										"shippop",
+										"com"
+									],
+									"path": [
+										"member",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get Price (เช็คราคาแต่ละขนส่ง)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"api_key\": \"{{api_key_prd}}\",\r\n    \"data\": {\r\n        \"0\": {\r\n            \"from\": {\r\n                \"name\": \"JNA Distribution\",\r\n                \"address\": \"10/5 ถ.พระราม 2 (ซอย 30) แยก 3\",\r\n                \"district\": \"บางมด\",\r\n                \"state\": \"จอมทอง\",\r\n                \"province\": \"กรุงเทพมหานคร\",\r\n                \"postcode\": \"10150\",\r\n                \"tel\": \"0949254495\"\r\n            },\r\n            \"to\": {\r\n                \"name\": \"เพชรรัตน์​  ทองนพคุณ\",\r\n                \"address\": \"บ้านเลขที่​ 153/1 ม. 2\",\r\n                \"district\": \"บ้านเพ\",\r\n                \"state\": \"เมืองระยอง\",\r\n                \"province\": \"ระยอง\",\r\n                \"postcode\": \"21160\",\r\n                \"tel\": \"0846964934\"\r\n            },\r\n            \"parcel\": {\r\n                \"weight\": \"1\",\r\n                \"width\": \"1\",\r\n                \"length\": \"1\",\r\n                \"height\": \"1\"\r\n            },\r\n            \"courier_code\": \"FLE\"\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_prd}}/pricelist/",
+							"host": [
+								"{{url_prd}}"
+							],
+							"path": [
+								"pricelist",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Booking Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"api_key\": \"{{api_key_prd}}\",\r\n    \"email\": \"acc.jna@gmail.com\",\r\n    \"data\": {\r\n        \"0\": {\r\n            \"from\": {\r\n                \"name\": \"JNA Distribution\",\r\n                \"address\": \"10/5 ถ.พระราม 2 (ซอย 30) แยก 3\",\r\n                \"district\": \"บางมด\",\r\n                \"state\": \"จอมทอง\",\r\n                \"province\": \"กรุงเทพมหานคร\",\r\n                \"postcode\": \"10150\",\r\n                \"tel\": \"0949254495\"\r\n            },\r\n            \"to\": {\r\n                \"name\": \"เพชรรัตน์​  ทองนพคุณ\",\r\n                \"address\": \"บ้านเลขที่​ 153/1 ม. 2\",\r\n                \"district\": \"เมือง\",\r\n                \"state\": \"เมือง\",\r\n                \"province\": \"เมือง\",\r\n                \"postcode\": \"36000\",\r\n                \"tel\": \"0846964934\"\r\n            },\r\n            \"parcel\": {\r\n                \"weight\": \"1\",\r\n                \"width\": \"1\",\r\n                \"length\": \"1\",\r\n                \"height\": \"1\"\r\n            },\r\n            \"courier_code\": \"FLE\"\r\n        },\r\n        \"1\": {\r\n            \"from\": {\r\n                \"name\": \"JNA Distribution\",\r\n                \"address\": \"10/5 ถ.พระราม 2 (ซอย 30) แยก 3\",\r\n                \"district\": \"บางมด\",\r\n                \"state\": \"จอมทอง\",\r\n                \"province\": \"กรุงเทพมหานคร\",\r\n                \"postcode\": \"10150\",\r\n                \"tel\": \"0949254495\"\r\n            },\r\n            \"to\": {\r\n                \"name\": \"เพชรรัตน์​  ทองนพคุณ\",\r\n                \"address\": \"บ้านเลขที่​ 153/1 ม. 2\",\r\n                \"district\": \"บ้านเพ\",\r\n                \"state\": \"เมืองระยอง\",\r\n                \"province\": \"ระยอง\",\r\n                \"postcode\": \"21160\",\r\n                \"tel\": \"0846964934\"\r\n            },\r\n            \"parcel\": {\r\n                \"weight\": \"1\",\r\n                \"width\": \"1\",\r\n                \"length\": \"1\",\r\n                \"height\": \"1\"\r\n            },\r\n            \"courier_code\": \"FLE\"\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_prd}}/booking/",
+							"host": [
+								"{{url_prd}}"
+							],
+							"path": [
+								"booking",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm Purchase",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"api_key\": \"{{api_key_prd}}\",\r\n    \"purchase_id\": 9315936\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_prd}}/confirm/",
+							"host": [
+								"{{url_prd}}"
+							],
+							"path": [
+								"confirm",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"api_key\": \"4279052de02c9f14ce27122c8244272d85d1ab54\",\r\n\t\"tracking_code\": \"SP128022285\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mkpservice.shippop.com/cancel/",
+							"protocol": "http",
+							"host": [
+								"mkpservice",
+								"shippop",
+								"com"
+							],
+							"path": [
+								"cancel",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tracking Purchcase Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"api_key\": \"e7672f8b5c520d05c71cd4e0cc6d4de1cb9d429d\",\r\n\t\"purchase_id\": 8823518,\r\n\t\"email\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mkpservice.shippop.com/tracking_purchase/",
+							"protocol": "http",
+							"host": [
+								"mkpservice",
+								"shippop",
+								"com"
+							],
+							"path": [
+								"tracking_purchase",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tracking Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tracking_code\": \"TH030119UMGZ2B\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mkpservice.shippop.com/tracking/",
+							"protocol": "http",
+							"host": [
+								"mkpservice",
+								"shippop",
+								"com"
+							],
+							"path": [
+								"tracking",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Label",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"api_key\": \"{{api_key_prd}}\",\r\n    \"purchase_id\": 8201112,\r\n\t\"tracking_code\": \"SP178805720\",\r\n\t\"size\": \"sticker\",\r\n\t\"type\": \"json\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_prd}}/label/",
+							"host": [
+								"{{url_prd}}"
+							],
+							"path": [
+								"label",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Report Delivered",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"api_key\": \"e7672f8b5c520d05c71cd4e0cc6d4de1cb9d429d\",\r\n\t\"start_date\": \"2021-02-05\",\r\n\t\"end_date\": \"2021-04-05\",\r\n    \"email\": \"acc.jna@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mkpservice.shippop.com/report-delivered/",
+							"protocol": "http",
+							"host": [
+								"mkpservice",
+								"shippop",
+								"com"
+							],
+							"path": [
+								"report-delivered",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Report COD",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"api_key\": \"e7672f8b5c520d05c71cd4e0cc6d4de1cb9d429d\",\r\n    \"filter_date\": \"SHIPPING\",\r\n\t\"start_date\": \"2021-02-05\",\r\n\t\"end_date\": \"2021-04-05\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mkpservice.shippop.com/report-cod/",
+							"protocol": "http",
+							"host": [
+								"mkpservice",
+								"shippop",
+								"com"
+							],
+							"path": [
+								"report-cod",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Develop",
+			"item": [
+				{
+					"name": "COD Member",
+					"item": [
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"api_key\": \"6a474357f050a5c492aea66745f593f6619315d3\",\r\n\t\"name_title\": \"MR\",\r\n\t\"name\": \"test03\",\r\n\t\"email\": \"acc.jna@gmail.com\",\r\n\t\"tax_id\": \"2425114889551\",\r\n\t\"address\": \"xxx\",\r\n\t\"phone\": \"0689987777\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://mkpservice.moaee.com/register/",
+									"protocol": "http",
+									"host": [
+										"mkpservice",
+										"moaee",
+										"com"
+									],
+									"path": [
+										"register",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateMemberIdentity",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "api_key",
+											"value": "6a474357f050a5c492aea66745f593f6619315d3",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "acc.jna@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "data[tax_id]",
+											"value": "2425114889551",
+											"type": "text"
+										},
+										{
+											"key": "data[files][]",
+											"type": "file",
+											"src": "/C:/Users/60010890/Desktop/jna/service-shipping/shippop/cod/idcard.jpg"
+										},
+										{
+											"key": "data[files][]",
+											"type": "file",
+											"src": "/C:/Users/60010890/Desktop/jna/service-shipping/shippop/cod/idcard.jpg"
+										},
+										{
+											"key": "data[files][]",
+											"type": "file",
+											"src": "/C:/Users/60010890/Desktop/jna/service-shipping/shippop/cod/idcard.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://mkpservice.moaee.com/identity/create/",
+									"protocol": "https",
+									"host": [
+										"mkpservice",
+										"moaee",
+										"com"
+									],
+									"path": [
+										"identity",
+										"create",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FetchMemberIdentity",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "api_key",
+											"value": "6a474357f050a5c492aea66745f593f6619315d3",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "test03.jna@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://mkpservice.shippop.dev/identity/fetch/",
+									"protocol": "https",
+									"host": [
+										"mkpservice",
+										"shippop",
+										"dev"
+									],
+									"path": [
+										"identity",
+										"fetch",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateBankAccount",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "api_key",
+											"value": "6a474357f050a5c492aea66745f593f6619315d3",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "acc.jna@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "data[account_name]",
+											"value": "ทดสอบ นะ",
+											"type": "text"
+										},
+										{
+											"key": "data[account_id]",
+											"value": "275",
+											"type": "text"
+										},
+										{
+											"key": "data[account_bank]",
+											"value": "002",
+											"type": "text"
+										},
+										{
+											"key": "data[account_branch]",
+											"value": "เซ็นทรัลเฟสติวัล อีสต์วิลล์",
+											"type": "text"
+										},
+										{
+											"key": "data[branch_code]",
+											"value": "100",
+											"type": "text"
+										},
+										{
+											"key": "data[image_book]",
+											"type": "file",
+											"src": "/C:/Users/60010890/Desktop/jna/service-shipping/shippop/cod/book_bank.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://mkpservice.moaee.com/bank/create/",
+									"protocol": "https",
+									"host": [
+										"mkpservice",
+										"moaee",
+										"com"
+									],
+									"path": [
+										"bank",
+										"create",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FetchBankAccount",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "api_key",
+											"value": "6a474357f050a5c492aea66745f593f6619315d3",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "test03.jna@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://mkpservice.moaee.com/bank/fetch/",
+									"protocol": "https",
+									"host": [
+										"mkpservice",
+										"moaee",
+										"com"
+									],
+									"path": [
+										"bank",
+										"fetch",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FetchMember",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "api_key",
+											"value": "6a474357f050a5c492aea66745f593f6619315d3",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "mkt.jna@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://mkpservice.moaee.com/member/",
+									"protocol": "https",
+									"host": [
+										"mkpservice",
+										"moaee",
+										"com"
+									],
+									"path": [
+										"member",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get Price (เช็คราคาแต่ละขนส่ง)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"api_key\": \"{{api_key_dev}}\",\r\n    \"data\": {\r\n        \"0\": {\r\n            \"courier_code\": \"FLE\",\r\n            \"from\": {\r\n                \"id\": 0,\r\n                \"name\": \"-\",\r\n                \"tel\": \"-\",\r\n                \"address\": \"-\",\r\n                \"district\": \"-\",\r\n                \"state\": \"-\",\r\n                \"province\": \"-\",\r\n                \"postcode\": \"82150\"\r\n            },\r\n            \"to\": {\r\n                \"name\": \"มุนินทร์ วรรณสาร\",\r\n                \"address\": \"บริษัทพรอมิส(ประเทศไทย)จำกัด อาคารซีพีทาวเวอร์ขอนแก่น3 ชั้น2\",\r\n                \"district\": \"ในเมือง\",\r\n                \"state\": \"เมือง\",\r\n                \"province\": \"ขอนแก่\",\r\n                \"postcode\": \"40000\",\r\n                \"tel\": \"0974565556\"\r\n            },\r\n            \"parcel\": {\r\n                \"weight\": 1,\r\n                \"width\": 1,\r\n                \"length\": 1,\r\n                \"height\": 1\r\n            },\r\n            \"showall\": 0\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_dev}}/pricelist/",
+							"host": [
+								"{{url_dev}}"
+							],
+							"path": [
+								"pricelist",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Booking Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"api_key\": \"{{api_key_dev}}\",\r\n    \"email\": \"acc.jna@gmail.com\",\r\n    \"data\": {\r\n        \"0\": {\r\n            \"from\": {\r\n                \"name\": \"JNA Distribution\",\r\n                \"address\": \"10/5 ถ.พระราม 2 (ซอย 30) แยก 3\",\r\n                \"district\": \"บางมด\",\r\n                \"state\": \"จอมทอง\",\r\n                \"province\": \"กรุงเทพมหานคร\",\r\n                \"postcode\": \"10150\",\r\n                \"tel\": \"0949254495\"\r\n            },\r\n            \"to\": {\r\n                \"name\": \"ชื่อ นามสกุล\",\r\n                \"address\": \"100\",\r\n                \"district\": \"เมือง\",\r\n                \"state\": \"เมือง\",\r\n                \"province\": \"ชัยภูมิ\",\r\n                \"postcode\": \"36000\",\r\n                \"tel\": \"0966653656\"\r\n            },\r\n            \"parcel\": {\r\n                \"weight\": \"1\",\r\n                \"width\": \"1\",\r\n                \"length\": \"1\",\r\n                \"height\": \"1\"\r\n            },\r\n            \"courier_code\": \"KRYP\"\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_dev}}/booking/",
+							"host": [
+								"{{url_dev}}"
+							],
+							"path": [
+								"booking",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm Purchase",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"api_key\": \"{{api_key_dev}}\",\r\n    \"purchase_id\": 194260\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_dev}}/confirm/",
+							"host": [
+								"{{url_dev}}"
+							],
+							"path": [
+								"confirm",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"api_key\": \"6a474357f050a5c492aea66745f593f6619315d3\",\r\n\t\"tracking_code\": \"SP048854029\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mkpservice.moaee.com/cancel/",
+							"protocol": "http",
+							"host": [
+								"mkpservice",
+								"moaee",
+								"com"
+							],
+							"path": [
+								"cancel",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tracking Purchcase Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"api_key\": \"6a474357f050a5c492aea66745f593f6619315d3\",\r\n\t\"purchase_id\": 184381,\r\n\t\"email\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mkpservice.moaee.com/tracking_purchase/",
+							"protocol": "http",
+							"host": [
+								"mkpservice",
+								"moaee",
+								"com"
+							],
+							"path": [
+								"tracking_purchase",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tracking Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"api_key\": \"6a474357f050a5c492aea66745f593f6619315d3\",\r\n\t\"tracking_code\": \"SP048932245\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mkpservice.moaee.com/tracking/",
+							"protocol": "http",
+							"host": [
+								"mkpservice",
+								"moaee",
+								"com"
+							],
+							"path": [
+								"tracking",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Label Priting",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"api_key\": \"{{api_key_dev}}\",\r\n    \"purchase_id\": 194258,\r\n    \"tracking_code\": \"SP049081105\",\r\n    \"type\": \"json\",\r\n    \"size\": \"sticker\",\r\n    \"options\": {\r\n        \"SP049066003\": {\r\n            \"replaceOrigin\": {\r\n                \"name\": \"JNA ทดสอบ\",\r\n                \"address\": \"522 ซอยรัชดาภิเษก 26 ถนนรัชดาภิเษก  แขวงสามเสนนอก เขตห้วยขวาง กรุงเทพมหานคร\",\r\n                \"district\": \"สามเสนนอก\",\r\n                \"state\": \"ห้วยขวาง\",\r\n                \"province\": \"กรุงเทพมหานคร\",\r\n                \"postcode\": \"10310\",\r\n                \"tel\": \"0929053355\"\r\n            },\r\n            \"remark\": \"asdfasdf\"\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_dev}}/label/",
+							"host": [
+								"{{url_dev}}"
+							],
+							"path": [
+								"label",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Multiple Label Printing",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"api_key\": \"6a474357f050a5c492aea66745f593f6619315d3\",\r\n\t\"tracking_code\": \"SP048854118,SP048854000\",\r\n\t\"size\": \"a5\",\r\n\t\"logo\": \"https:\\/\\/www.shippop.com\\/assets\\/images\\/frontpage\\/logo_shippop.png?v=0.002438\\/\",\r\n\t\"type\": \"html\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mkpservice.moaee.com/label_tracking_code/",
+							"protocol": "http",
+							"host": [
+								"mkpservice",
+								"moaee",
+								"com"
+							],
+							"path": [
+								"label_tracking_code",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Report Delivered",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"api_key\": \"6a474357f050a5c492aea66745f593f6619315d3\",\r\n    \"start_date\": \"2020-08-01\",\r\n    \"end_date\": \"2020-08-05\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mkpservice.moaee.com/report-delivered",
+							"protocol": "http",
+							"host": [
+								"mkpservice",
+								"moaee",
+								"com"
+							],
+							"path": [
+								"report-delivered"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Report COD",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"api_key\": \"6a474357f050a5c492aea66745f593f6619315d3\",\r\n    \"filter_date\": \"SHIPPING\",\r\n\t\"start_date\": \"2020-01-01\",\r\n\t\"end_date\": \"2020-08-05\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mkpservice.moaee.com/report-cod/",
+							"protocol": "http",
+							"host": [
+								"mkpservice",
+								"moaee",
+								"com"
+							],
+							"path": [
+								"report-cod",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api_key_dev",
+			"value": "6a474357f050a5c492aea66745f593f6619315d3"
+		},
+		{
+			"key": "api_key_prd",
+			"value": "e7672f8b5c520d05c71cd4e0cc6d4de1cb9d429d"
+		},
+		{
+			"key": "url_dev",
+			"value": "http://mkpservice.moaee.com"
+		},
+		{
+			"key": "url_prd",
+			"value": "http://mkpservice.shippop.com"
+		}
+	]
+}

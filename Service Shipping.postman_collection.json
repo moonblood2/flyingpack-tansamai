@@ -1,0 +1,783 @@
+{
+	"info": {
+		"_postman_id": "35b7fc13-7c55-4c17-8a27-0f010720f0f2",
+		"name": "Service Shipping",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Rose Gold\",\r\n    \"email\": \"rg.jna@gmail.com\",\r\n    \"role\": 4,\r\n    \"password\": \"rg19112016\",\r\n    \"confirm_password\": \"rg19112016\",\r\n    \"contact\": {\r\n        \"address\": \"cannot be blank\",\r\n        \"district\": \"cannot be blank\",\r\n        \"name\": \"cannot be blank\",\r\n        \"phone_number\": \"1234567891\",\r\n        \"postcode\": \"55555\",\r\n        \"province\": \"cannot be blank\",\r\n        \"state\": \"cannot be blank\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_sp}}/users/",
+							"host": [
+								"{{url_sp}}"
+							],
+							"path": [
+								"users",
+								""
+							]
+						},
+						"description": "Register new user."
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{local_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEzLCJyb2wiOjEsImV4cCI6MTYwMjQ5NjgyOSwiaXNzIjoidGVzdCJ9.L5aXRPPEKEgpxKIjriyLFJlqFDjcbveTWfBUzouHI6s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/users/11/",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"users",
+								"11",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEyLCJyb2wiOjEsImV4cCI6MTYwMjY3MTE2MCwiaXNzIjoidGVzdCJ9.zzrMCCm4RPSQZGmeAnPbu_BTGmIhyy9GpMZCZiWZFx8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/users/11/",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"users",
+								"11",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "MakeOrder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": 1,\r\n    \"sender\": {\r\n        \"sender_type\": 2,\r\n        \"national_id_number\": \"0105553004666\",\r\n        \"passport_number\": \"\",\r\n        \"tax_id_number\": \"\",\r\n        \"birth_date\": \"2010-01-12\",\r\n        \"name\": \"บริษัท โรสโกลด์ (ไทยแลนด์) จำกัด\",\r\n        \"phone_number\": \"0949254495\",\r\n        \"address\": \"10/5 ถ.พระราม 2 (ซอย 30) แยก 3\",\r\n        \"district\": \"บางมด\",\r\n        \"state\": \"จอมทอง\",\r\n        \"province\": \"กรุงเทพมหานคร\",\r\n        \"postcode\": \"10150\"\r\n    },\r\n    \"parcels\": [],\r\n    \"an_parcels\": [\r\n        {\r\n            \"provider_code\": 1,\r\n            \"courier_code\": \"KRYP\",\r\n            \"enable_cod\": false,\r\n            \"cod_amount\": 0,\r\n            \"origin\": {\r\n                \"name\": \"บริษัท โรสโกลด์ (ไทยแลนด์) จำกัด\",\r\n                \"address\": \"10/5 ถ.พระราม 2 (ซอย 30) แยก 3\",\r\n                \"district\": \"บางมด\",\r\n                \"state\": \"จอมทอง\",\r\n                \"province\": \"กรุงเทพมหานคร\",\r\n                \"postcode\": \"10150\",\r\n                \"phone_number\": \"0949254495\"\r\n            },\r\n            \"destination\": {\r\n                \"name\": \"ธนวรรณ เรืองรอง\",\r\n                \"address\": \"สถานีตำรวจภูธรสามบ่อ 140 ม.1 ต.วัดสน อ.ระโนด จ.สงขลา 90140\",\r\n                \"district\": \"วัดสน\",\r\n                \"state\": \"ระโนด\",\r\n                \"province\": \"สงขลา\",\r\n                \"postcode\": \"90140\",\r\n                \"phone_number\": \"0816086972\"\r\n            },\r\n            \"parcel_shape\": {\r\n                \"weight\": 1,\r\n                \"width\": 1,\r\n                \"length\": 1,\r\n                \"height\": 1\r\n            },\r\n            \"an_order_id\": \"631d77cb-4a70-4cb7-971a-570eb94b0765\",\r\n            \"an_order_items\": [\r\n                {\r\n                    \"product_code\": \"SAKANA_N\",\r\n                    \"serial_numbers\": [\r\n                        \"\"\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n    ],\r\n    \"products\": [],\r\n    \"payment_method\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_sp}}/orders/",
+							"host": [
+								"{{url_sp}}"
+							],
+							"path": [
+								"orders",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MakeOrder AgentNetwork",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"an_parcels\": [\r\n        {\r\n            \"provider_code\": 1,\r\n            \"courier_code\": \"FLE\",\r\n            \"enable_cod\": false,\r\n            \"cod_amount\": 0,\r\n            \"origin\": {\r\n                \"name\": \"JNA Distribution Co.,LTD\",\r\n                \"address\": \"10/5 ถ.พระราม 2 (ซอย 30) แยก 3\",\r\n                \"district\": \"บางมด\",\r\n                \"state\": \"จอมทอง\",\r\n                \"province\": \"กรุงเทพมหานคร\",\r\n                \"postcode\": \"10150\"\r\n            },\r\n            \"destination\": {\r\n                \"name\": \"ชื่อ นามสกุล\",\r\n                \"address\": \"100\",\r\n                \"district\": \"เมือง\",\r\n                \"state\": \"เมือง\",\r\n                \"province\": \"ชัยภูมิ\",\r\n                \"postcode\": \"36000\",\r\n                \"phone_number\": \"0648889967\"\r\n            },\r\n            \"parcel_shape\": {\r\n                \"weight\": 1,\r\n                \"width\": 1,\r\n                \"length\": 1,\r\n                \"height\": 1\r\n            }\r\n        },\r\n        {\r\n            \"provider_code\": 1,\r\n            \"courier_code\": \"KRYP\",\r\n            \"enable_cod\": false,\r\n            \"cod_amount\": 0,\r\n            \"origin\": {\r\n                \"name\": \"JNA Distribution Co.,LTD\",\r\n                \"address\": \"10/5 ถ.พระราม 2 (ซอย 30) แยก 3\",\r\n                \"district\": \"บางมด\",\r\n                \"state\": \"จอมทอง\",\r\n                \"province\": \"กรุงเทพมหานคร\",\r\n                \"postcode\": \"10150\"\r\n            },\r\n            \"destination\": {\r\n                \"name\": \"ชื่อ นามสกุล\",\r\n                \"address\": \"100\",\r\n                \"district\": \"เมือง\",\r\n                \"state\": \"เมือง\",\r\n                \"province\": \"ชัยภูมิ\",\r\n                \"postcode\": \"36000\",\r\n                \"phone_number\": \"0648889967\"\r\n            },\r\n            \"parcel_shape\": {\r\n                \"weight\": 1,\r\n                \"width\": 1,\r\n                \"length\": 1,\r\n                \"height\": 1\r\n            }\r\n        },\r\n        {\r\n            \"provider_code\": 1,\r\n            \"courier_code\": \"THP\",\r\n            \"enable_cod\": false,\r\n            \"cod_amount\": 0,\r\n            \"origin\": {\r\n                \"name\": \"JNA Distribution Co.,LTD\",\r\n                \"address\": \"10/5 ถ.พระราม 2 (ซอย 30) แยก 3\",\r\n                \"district\": \"บางมด\",\r\n                \"state\": \"จอมทอง\",\r\n                \"province\": \"กรุงเทพมหานคร\",\r\n                \"postcode\": \"10150\"\r\n            },\r\n            \"destination\": {\r\n                \"name\": \"ชื่อ นามสกุล\",\r\n                \"address\": \"100\",\r\n                \"district\": \"เมือง\",\r\n                \"state\": \"เมือง\",\r\n                \"province\": \"ชัยภูมิ\",\r\n                \"postcode\": \"36000\",\r\n                \"phone_number\": \"0648889967\"\r\n            },\r\n            \"parcel_shape\": {\r\n                \"weight\": 1,\r\n                \"width\": 1,\r\n                \"length\": 1,\r\n                \"height\": 1\r\n            }\r\n        },\r\n        {\r\n            \"provider_code\": 1,\r\n            \"courier_code\": \"FLE\",\r\n            \"enable_cod\": false,\r\n            \"cod_amount\": 0,\r\n            \"origin\": {\r\n                \"name\": \"JNA Distribution Co.,LTD\",\r\n                \"address\": \"10/5 ถ.พระราม 2 (ซอย 30) แยก 3\",\r\n                \"district\": \"บางมด\",\r\n                \"state\": \"จอมทอง\",\r\n                \"province\": \"กรุงเทพมหานคร\",\r\n                \"postcode\": \"10150\"\r\n            },\r\n            \"destination\": {\r\n                \"name\": \"ชื่อ นามสกุล\",\r\n                \"address\": \"100\",\r\n                \"district\": \"ลาดกระบัง\",\r\n                \"state\": \"ลาดกระบัง\",\r\n                \"province\": \"กรุงเทพมหานคร\",\r\n                \"postcode\": \"10520\",\r\n                \"phone_number\": \"0648889967\"\r\n            },\r\n            \"parcel_shape\": {\r\n                \"weight\": 1,\r\n                \"width\": 1,\r\n                \"length\": 1,\r\n                \"height\": 1\r\n            }\r\n        },\r\n        {\r\n            \"provider_code\": 1,\r\n            \"courier_code\": \"THP\",\r\n            \"enable_cod\": false,\r\n            \"cod_amount\": 0,\r\n            \"origin\": {\r\n                \"name\": \"JNA Distribution Co.,LTD\",\r\n                \"address\": \"10/5 ถ.พระราม 2 (ซอย 30) แยก 3\",\r\n                \"district\": \"บางมด\",\r\n                \"state\": \"จอมทอง\",\r\n                \"province\": \"กรุงเทพมหานคร\",\r\n                \"postcode\": \"10150\"\r\n            },\r\n            \"destination\": {\r\n                \"name\": \"ชื่อ นามสกุล\",\r\n                \"address\": \"100\",\r\n                \"district\": \"สะเตง\",\r\n                \"state\": \"เมืองยะลา\",\r\n                \"province\": \"ยะลา\",\r\n                \"postcode\": \"95000\",\r\n                \"phone_number\": \"0648889967\"\r\n            },\r\n            \"parcel_shape\": {\r\n                \"weight\": 1,\r\n                \"width\": 1,\r\n                \"length\": 1,\r\n                \"height\": 1\r\n            }\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_sp}}/orders/",
+							"host": [
+								"{{url_sp}}"
+							],
+							"path": [
+								"orders",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetParcelPrice",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{sp_local_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"provider_code\": 1,\r\n    \"courier_code\": \"KRYP\",\r\n    \"origin\": {\r\n      \"name\": \"JNA Distribution Co.,LTD\",\r\n      \"address\": \"10/5 ถ.พระราม 2 (ซอย 30) แยก 3\",\r\n      \"district\": \"บางมด\",\r\n      \"state\": \"จอมทอง\",\r\n      \"province\": \"กรุงเทพมหานคร\",\r\n      \"postcode\": \"10150\",\r\n      \"phone_number\": \"0982892298\"\r\n    },\r\n    \"destination\": {\r\n      \"name\": \"ทดสอบ ไม่ต้องส่ง\",\r\n      \"address\": \"โครงการ Biztown ตรงข้าม BigC สุขสวัสดิ์ 90/28 หมู่ 18 ต.บางพึ่ง\",\r\n      \"district\": \"หงษ์เจริญ\",\r\n      \"state\": \"ท่าแซะ\",\r\n      \"province\": \"ชุมพร\",\r\n      \"postcode\": \"86140\",\r\n      \"phone_number\": \"0865912877\"\r\n    },\r\n    \"parcel_shape\": {\r\n      \"weight\": 10,\r\n      \"width\": 10,\r\n      \"length\": 10,\r\n      \"height\": 10\r\n    },\r\n    \"an_order_id\": \"a66ffc94-abb3-4e7c-bce3-5cfaa2cfffd7\",\r\n    \"an_order_items\": [\r\n      {\r\n        \"product_code\": \"ACNE\",\r\n        \"serial_numbers\": [\r\n          \"SSS01\"\r\n        ]\r\n      },\r\n      {\r\n        \"product_code\": \"ALC-FREE\",\r\n        \"serial_numbers\": [\r\n          \"SSS02\"\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/parcel-price/",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"parcel-price",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetOrderParcel",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/orders/parcels/start/2020-11-01/end/2021-01-31/",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"orders",
+								"parcels",
+								"start",
+								"2020-11-01",
+								"end",
+								"2021-01-31",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetOrderProduct",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/orders/products/start/2020-11-01/end/2021-01-31/",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"orders",
+								"products",
+								"start",
+								"2020-11-01",
+								"end",
+								"2021-01-31",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateOrderParcel",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{local_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"parcel_type\": 2,\r\n    \"order_parcel_id\": \"9ff4e422-8528-495d-8db4-c3e99513979f\",\r\n    \"tracking_code\": \"NEW01XX\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/orders/parcels/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"orders",
+								"parcels",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order Parcel by IDs",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{local_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": \"ddc5c679-6802-41e4-aa2b-00c3bdd3742b\",\r\n    \"ids\": [\r\n        \"f98905e6-0ced-4434-8480-00a749fe539d\",\r\n        \"8c0c7458-c3f7-46a4-bf97-20c43a5fdf33\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/orders/parcels/ids/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"orders",
+								"parcels",
+								"ids",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Create Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{sp_local_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Box Size XXL\",\r\n    \"price\": 30\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/product/",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"product",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{sp_local_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/product/13/",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"product",
+								"13",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{sp_local_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Box Size XXL (Big)\",\r\n    \"price\": 17\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/product/13/",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"product",
+								"13",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{sp_local_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/product/",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"product",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OrderHook",
+			"item": [
+				{
+					"name": "Order Status Hook",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "tracking_code",
+									"value": "SP174911728",
+									"type": "text"
+								},
+								{
+									"key": "order_status",
+									"value": "transferred",
+									"type": "text"
+								},
+								{
+									"key": "data[weight]",
+									"value": "200",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "data[price]",
+									"value": "200",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "data[datetime]",
+									"value": "2021-02-24 13:08:54",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3001/order/status/hook/rIDJUMrAtESIr9Ge8uB6",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"order",
+								"status",
+								"hook",
+								"rIDJUMrAtESIr9Ge8uB6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AuthLogin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"shopsudthep01@gmail.com\",\r\n    \"password\": \"so strong password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url_sp}}/auth/login/",
+					"host": [
+						"{{url_sp}}"
+					],
+					"path": [
+						"auth",
+						"login",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "AuthLogin",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin03@gmail.com\",\r\n    \"password\": \"so strong password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/auth/login/",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"auth",
+								"login",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": 13,\n    \"email\": \"admin03@gmail.com\",\n    \"name\": \"Shop Admin 03\",\n    \"role\": \"admin\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEzLCJyb2wiOjEsImV4cCI6MTYwMzAyMDYyNCwiaXNzIjoidGVzdCJ9.pUYI1q7jG9m_KtLlgPDfIdETfS9-tMocDdGUzcfe-qE\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Courier and Product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{sp_local_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3001/courier-and-product/",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"courier-and-product",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Hook Url: Shippop: Order Status",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "tracking_code",
+							"value": "SP049054736",
+							"type": "text"
+						},
+						{
+							"key": "order_status",
+							"value": "shipping",
+							"type": "text"
+						},
+						{
+							"key": "data[price]",
+							"value": "999",
+							"type": "text"
+						},
+						{
+							"key": "data[weight]",
+							"value": "999",
+							"type": "text"
+						},
+						{
+							"key": "data[width]",
+							"value": "999",
+							"type": "text"
+						},
+						{
+							"key": "data[length]",
+							"value": "999",
+							"type": "text"
+						},
+						{
+							"key": "data[height]",
+							"value": "999",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/order/status/hook/rIDJUMrAtESIr9Ge8uB6",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"order",
+						"status",
+						"hook",
+						"rIDJUMrAtESIr9Ge8uB6"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

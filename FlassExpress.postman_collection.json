@@ -1,0 +1,404 @@
+{
+	"info": {
+		"_postman_id": "7e1ba0cb-3ec7-479b-aeeb-93083e336777",
+		"name": "FlassExpress",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Sandbox",
+			"item": [
+				{
+					"name": "Create Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nonceStr",
+									"value": " 1536749552628",
+									"type": "text"
+								},
+								{
+									"key": "mchId",
+									"value": " BA0987",
+									"type": "text"
+								},
+								{
+									"key": "sign",
+									"value": " 686291E2619CDBF34B6E5F22804DEB32393EFE500135299DBDFEB217AC6F5E2B",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "api-training.flashexpress.com/open/v1/orders",
+							"host": [
+								"api-training",
+								"flashexpress",
+								"com"
+							],
+							"path": [
+								"open",
+								"v1",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Management",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "mchId",
+									"value": "AA0005",
+									"type": "text"
+								},
+								{
+									"key": "nonceStr",
+									"value": "1525314174723",
+									"type": "text"
+								},
+								{
+									"key": "sign",
+									"value": "94e4253a44bdb4f257afd8ae8dc65ddba53db9dd8eb561995b3a10f3fe1d1689",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.flashexpress.com/open/v1/warehouses",
+							"protocol": "https",
+							"host": [
+								"api",
+								"flashexpress",
+								"com"
+							],
+							"path": [
+								"open",
+								"v1",
+								"warehouses"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get Code (Web)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://www.flashexpress.co.th/getjson/?keyWord=%E0%B8%97%E0%B9%88%E0%B8%B2%E0%B8%9E%E0%B8%B5%E0%B9%88%E0%B9%80%E0%B8%A5%E0%B8%B5%E0%B9%89%E0%B8%A2%E0%B8%87%20%E0%B9%80%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%87%E0%B8%AA%E0%B8%B8%E0%B8%9E%E0%B8%A3%E0%B8%A3%E0%B8%93%E0%B8%9A%E0%B8%B8%E0%B8%A3%E0%B8%B5%20%E0%B8%AA%E0%B8%B8%E0%B8%9E%E0%B8%A3%E0%B8%A3%E0%B8%93%E0%B8%9A%E0%B8%B8%E0%B8%A3%E0%B8%B5%2072000",
+					"protocol": "https",
+					"host": [
+						"www",
+						"flashexpress",
+						"co",
+						"th"
+					],
+					"path": [
+						"getjson",
+						""
+					],
+					"query": [
+						{
+							"key": "keyWord",
+							"value": "%E0%B8%97%E0%B9%88%E0%B8%B2%E0%B8%9E%E0%B8%B5%E0%B9%88%E0%B9%80%E0%B8%A5%E0%B8%B5%E0%B9%89%E0%B8%A2%E0%B8%87%20%E0%B9%80%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%87%E0%B8%AA%E0%B8%B8%E0%B8%9E%E0%B8%A3%E0%B8%A3%E0%B8%93%E0%B8%9A%E0%B8%B8%E0%B8%A3%E0%B8%B5%20%E0%B8%AA%E0%B8%B8%E0%B8%9E%E0%B8%A3%E0%B8%A3%E0%B8%93%E0%B8%9A%E0%B8%B8%E0%B8%A3%E0%B8%B5%2072000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check Price (Web)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "src_area=TH660601-TH6606-TH66-TH-82150&dst_area=TH660602-TH6606-TH66-TH-82150&weight=1&length=1&width=1&height=1"
+				},
+				"url": {
+					"raw": "https://www.flashexpress.co.th/en/tools/check-price-do/",
+					"protocol": "https",
+					"host": [
+						"www",
+						"flashexpress",
+						"co",
+						"th"
+					],
+					"path": [
+						"en",
+						"tools",
+						"check-price-do",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "mchId",
+							"value": "BA0987",
+							"type": "text"
+						},
+						{
+							"key": "expressCategory",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "codAmount",
+							"value": "10000",
+							"type": "text"
+						},
+						{
+							"key": "srcDistrictName",
+							"value": "ในเมือง",
+							"type": "text"
+						},
+						{
+							"key": "codEnabled",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "srcCityName",
+							"value": "เมืองอุบลราชธานี",
+							"type": "text"
+						},
+						{
+							"key": "dstHomePhone",
+							"value": "0970220220",
+							"type": "text"
+						},
+						{
+							"key": "dstDistrictName",
+							"value": "สันพระเนตร",
+							"type": "text"
+						},
+						{
+							"key": "nonceStr",
+							"value": "1536749552628",
+							"type": "text"
+						},
+						{
+							"key": "remark",
+							"value": "ขึ้นบันได",
+							"type": "text"
+						},
+						{
+							"key": "srcName",
+							"value": "หอมรวม  create order test name",
+							"type": "text"
+						},
+						{
+							"key": "dstPostalCode",
+							"value": "50210",
+							"type": "text"
+						},
+						{
+							"key": "weight",
+							"value": "1000",
+							"type": "text"
+						},
+						{
+							"key": "srcPhone",
+							"value": "0630101454",
+							"type": "text"
+						},
+						{
+							"key": "insured",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "sign",
+							"value": "E2B6AC4ABE42E631B9E50A6B8DB34CC1411F0C108EF1BD2EFCF89D6CBC82B273",
+							"type": "text"
+						},
+						{
+							"key": "dstName",
+							"value": "น้ำพริกแม่อำพร",
+							"type": "text"
+						},
+						{
+							"key": "dstPhone",
+							"value": "0970209976",
+							"type": "text"
+						},
+						{
+							"key": "srcProvinceName",
+							"value": "อุบลราชธานี",
+							"type": "text"
+						},
+						{
+							"key": "srcDetailAddress",
+							"value": "68/5-6 ม.1 บ้านท่าบ่อ create order test address",
+							"type": "text"
+						},
+						{
+							"key": "articleCategory",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "dstCityName",
+							"value": "สันทราย",
+							"type": "text"
+						},
+						{
+							"key": "dstProvinceName",
+							"value": "เชียงใหม่",
+							"type": "text"
+						},
+						{
+							"key": "dstDetailAddress",
+							"value": "127 หมู่ 3 ต.หนองแหย่ง อ.สันทราย จ.เชียงใหม่ create order test address",
+							"type": "text"
+						},
+						{
+							"key": "insureDeclareValue",
+							"value": "10000",
+							"type": "text"
+						},
+						{
+							"key": "srcPostalCode",
+							"value": "34000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://api-training.flashexpress.com/open/v1/orders",
+					"protocol": "http",
+					"host": [
+						"api-training",
+						"flashexpress",
+						"com"
+					],
+					"path": [
+						"open",
+						"v1",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tracking Order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "mchId",
+							"value": "BA0987",
+							"type": "text"
+						},
+						{
+							"key": "nonceStr",
+							"value": "1604494249",
+							"type": "text"
+						},
+						{
+							"key": "sign",
+							"value": "F5523C68ADF36A10206D16FF7AE358F5D7642CCA96B82D731CEB2F154855C583",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "api-training.flashexpress.com/open/v1/orders/TH47143FBW2C/routes",
+					"host": [
+						"api-training",
+						"flashexpress",
+						"com"
+					],
+					"path": [
+						"open",
+						"v1",
+						"orders",
+						"TH47143FBW2C",
+						"routes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel Order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "mchId",
+							"value": "BA0987",
+							"type": "text"
+						},
+						{
+							"key": "nonceStr",
+							"value": "1604494249",
+							"type": "text"
+						},
+						{
+							"key": "sign",
+							"value": "F5523C68ADF36A10206D16FF7AE358F5D7642CCA96B82D731CEB2F154855C583",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://api-training.flashexpress.com/open/v1/orders/TH47143FBW2C/cancel",
+					"protocol": "http",
+					"host": [
+						"api-training",
+						"flashexpress",
+						"com"
+					],
+					"path": [
+						"open",
+						"v1",
+						"orders",
+						"TH47143FBW2C",
+						"cancel"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
