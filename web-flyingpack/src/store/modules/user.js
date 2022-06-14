@@ -32,6 +32,7 @@ const mutations = {
         state.profile = {};
         localStorage.removeItem('profile')
     }
+   
 };
 
 export default {

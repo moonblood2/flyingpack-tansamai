@@ -1,5 +1,5 @@
 import {AnParcel} from "@/entities/AnParcel";
-import {AnBankAccount} from "@/entities/AnBankAccount";
+import {BankAccount} from "@/entities/BankAccount";
 import {CourierCodeToCourierName} from "@/entities/AnCourier";
 import {SpOrderParcelShippop} from "@/entities/SpOrderParcelShippop";
 import {SpOrderParcelShippopFlash} from "@/entities/SpOrderParcelShippopFlash";
@@ -14,8 +14,12 @@ export const parseAnParcel = (e) => {
         courierCode: e["courierCode"],
         enableCOD: parseInt(e["codAmount"]) > 0,
         codAmount: parseInt(e["codAmount"]),
-        trackingCode: e["trackingCodes"] ? e["trackingCodes"][0]: '',
-        trackingCodes: e["trackingCodes"],
+        trackingCode: e["trackingCode"],
+        sortCode: e["sortCode"],
+        lineCode: e["lineCode"],
+        sortingLineCode: e["sortingLineCode"],
+        dstStoreName: e["dstStoreName"],
+        // trackingCodes: e["trackingCodes"],
         origin: new ContactInfo({}),
         destination: new ContactInfo({
             name: e["desName"],
@@ -74,7 +78,7 @@ export const parseAnParcel = (e) => {
         }
     }
     if (e["bankAccount"]) {
-        anParcel.anBankAccount = new AnBankAccount({
+        anParcel.bankAccount = new BankAccount({
             bank: e["bankAccount"]["bank"],
             accountName: e["bankAccount"]["accountName"],
             accountNo: e["bankAccount"]["accountNo"],

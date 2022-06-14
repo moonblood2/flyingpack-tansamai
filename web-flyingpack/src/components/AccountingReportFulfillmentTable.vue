@@ -206,8 +206,8 @@ export default {
       //Form options
       fulfillmentStatusOptions: [
         {value: -1, text: 'สถานะ'},
-        {value: 1, text: 'ทำแล้ว'},
-        {value: 2, text: 'ยังไม่ทำ'},
+        {value: 1, text: 'จัดส่งแล้ว'},
+        {value: 2, text: 'ยังไม่จัดส่ง'},
         {value: 3, text: 'ยกเลิก'},
       ],
       courierCodeOptions: [
@@ -292,7 +292,7 @@ export default {
             desProvince: anParcel.destination.province,
             desPostcode: anParcel.destination.postcode,
             courierName: anParcel.courierName,
-            trackingCode: anParcel.trackingCodes.join(', '),
+            trackingCode: anParcel.trackingCode,
             codAmount: anParcel.codAmount,
             weight: anParcel.weight,
             dimension: anParcel.width + anParcel.length + anParcel.height,

@@ -7,8 +7,8 @@ export enum AnOrderFulfillmentStatusEnum {
 
 export const AnOrderFulfillmentStatusToString = {
     [AnOrderFulfillmentStatusEnum.NOT_SET]: "-",
-    [AnOrderFulfillmentStatusEnum.PACKED]: "ทำแล้ว",
-    [AnOrderFulfillmentStatusEnum.NOT_PACKED]: "ยังไม่ทำ",
+    [AnOrderFulfillmentStatusEnum.PACKED]: "จัดส่งแล้ว",
+    [AnOrderFulfillmentStatusEnum.NOT_PACKED]: "ยังไม่จัดส่ง",
     [AnOrderFulfillmentStatusEnum.CANCEL]: "ยกเลิก",
 }
 

@@ -11,6 +11,7 @@ import {BankAccountModel} from "./bankAccount.model";
 import {AnOrderFulfillmentStatusEnum} from "./anOrderFulfillmentStatus.enum";
 import {AnOrderItemModel} from "./anOrderItem.model";
 import {AnCourierCodeEnum} from "./anCourierCode.enum";
+import { TrackingDetailModel } from "./TrackingDetail.model";
 
 export interface OrderDto
     extends UserIdModel,
@@ -27,7 +28,7 @@ export interface OrderDto
     desPostcode: string;
     courierCode: AnCourierCodeEnum;
     codAmount: number;
-    trackingCodes: Array<string>;
+    trackingCode: string;
     fulfillmentStatus: AnOrderFulfillmentStatusEnum;
     fulfillmentStatusString?: string;
     shippingStatus?: string;
@@ -42,4 +43,9 @@ export interface OrderDto
     spOrderParcelShippopFlash?: SpOrderParcelShippopFlashModel;
     anOrderPrice?: AnOrderPriceModel;
     bankAccount?: BankAccountModel;
+    trackingDetail?:TrackingDetailModel;
+    sortCode?:string;
+    lineCode?:string;
+    sortingLineCode?:string;
+    dstStoreName?:string;
 }

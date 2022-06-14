@@ -3,12 +3,12 @@
     <b-navbar
         v-if="showHeader"
         fixed="top"
-        style="background: #242f3d !important;"
+        style="background: #ffa500 !important;"
         type="dark"
         variant="light"
     >
       <b-navbar-brand @click="onClickNavbarBrand">
-        Flyingpack
+        Aura Blue Distribution Center
       </b-navbar-brand>
       <h1 style="color: white" v-if="env.MODE === 'staging'"> เฉพาะทดสอบ </h1>
       <!-- Right aligned nav items -->

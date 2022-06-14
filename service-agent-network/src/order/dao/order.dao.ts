@@ -57,6 +57,7 @@ class OrderDao {
         order.anOrderId = uuidv4();
 
         let err: CommonError = NewCommonError();
+        console.log("bedore query : ",order.trackingCode);
         try {
             await postgresService.getClient().query("BEGIN");
 
@@ -64,8 +65,8 @@ class OrderDao {
             let queryText = `INSERT INTO public.order(
             an_order_id, user_id, sp_order_parcel_id, reference_no, des_name, 
             des_phone_number, des_address, des_subdistrict, des_district, des_province, 
-            des_postcode, courier_code, cod_amount, fulfillment_status) 
-            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14);`;
+            des_postcode, courier_code, cod_amount, fulfillment_status,tracking_code,sort_code,line_code,sorting_line_code,dst_store_name) 
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17 ,$18 ,$19 );`;
             let values = [
                 order.anOrderId,
                 order.userId,
@@ -81,7 +82,14 @@ class OrderDao {
                 order.courierCode,
                 order.codAmount ? order.codAmount : null,
                 AnOrderFulfillmentStatusEnum.NOT_PACKED,
+                order.trackingCode,
+                order.sortCode,
+                order.lineCode,
+                order.sortingLineCode,
+                order.dstStoreName
             ];
+            console.log('queryText : ',queryText);
+            console.log('values : ',values);
             await postgresService.getClient().query(queryText, values);
 
             /**Insert each order_product*/
@@ -163,7 +171,7 @@ class OrderDao {
                 key = orderId;
                 andWhere = `AND (an_order_id=$1::uuid)`;
             } else {
-                andWhere = `AND (reference_no=$1 OR $1=ANY(tracking_codes))`;
+                andWhere = `AND (reference_no=$1 OR tracking_code=$1)`;
             }
         }
 
@@ -186,8 +194,7 @@ ON op.an_product_id=p.an_product_id
 LEFT JOIN public.an_order_product_serial_number aops
 ON op.an_order_product_id=aops.an_order_product_id
 WHERE aops.deleted_at=0 OR aops.deleted_at IS NULL
-ORDER BY p.product_code, aops.an_order_product_serial_number_id
-        `;
+ORDER BY p.product_code, aops.an_order_product_serial_number_id`;
         log(queryText)
         const values = [key];
         try {
@@ -208,7 +215,7 @@ ORDER BY p.product_code, aops.an_order_product_serial_number_id
                     courierCode: row["courier_code"],
                     codAmount: row["cod_amount"] ? parseFloat(row["cod_amount"]) : 0,
                     createdAt: row["created_at_tmz"],
-                    trackingCodes: row["tracking_codes"],
+                    trackingCode: row["tracking_code"],
                     fulfillmentStatus: row["fulfillment_status"],
                     items: new Array<AnOrderItemModel>(),
                 }
@@ -308,7 +315,7 @@ ORDER BY p.product_code, aops.an_order_product_serial_number_id
 
             let andWhereKeyWord = `AND (
                 o.reference_no LIKE CONCAT('%', $7::text, '%') OR 
-                $7=ANY(o.tracking_codes) OR
+                o.tracking_code=$7 OR
                 o.des_name LIKE CONCAT('%', $7::text, '%') OR
                 ba.account_no LIKE CONCAT('%', $7::text, '%') OR
                 ba.account_name LIKE CONCAT('%', $7::text, '%')
@@ -407,7 +414,7 @@ result_cte AS
 (
     SELECT order_distinct_limit_cte.row_number, o.an_order_id, o.sp_order_parcel_id, o.reference_no, 
     o.des_name, o.des_phone_number, o.des_address, o.des_subdistrict, o.des_district, o.des_province, o.des_postcode, 
-    o.courier_code, o.cod_amount, o.tracking_codes,
+    o.courier_code, o.cod_amount, o.tracking_code,o.sort_code,o.line_code,o.sorting_line_code,o.dst_store_name,
     o.fulfillment_status, o.shipping_status, o.cod_status,
     op.an_order_product_id, p.an_product_id, p.product_code, p.name, p.img_url, p.serial_regex, p.robotic_sku,
     aops.an_order_product_serial_number_id, aops.serial_number_start, aops.serial_number_end, aops.created_at as aops_created_at, aops.deleted_at as aops_deleted_at,
@@ -461,7 +468,7 @@ result_cte AS
 (
     SELECT o.an_order_id, o.sp_order_parcel_id, o.reference_no, 
     o.des_name, o.des_phone_number, o.des_address, o.des_subdistrict, o.des_district, o.des_province, o.des_postcode, 
-    o.courier_code, o.cod_amount, o.tracking_codes,
+    o.courier_code, o.cod_amount, o.tracking_code,o.sort_code,o.line_code,o.sorting_line_code,o.dst_store_name,
     o.fulfillment_status, o.shipping_status, o.cod_status,
     op.an_order_product_id, p.an_product_id, p.product_code, p.name, p.img_url, p.serial_regex, p.robotic_sku,
     aops.an_order_product_serial_number_id, aops.serial_number_start, aops.serial_number_end, aops.created_at as aops_created_at, aops.deleted_at as aops_deleted_at,
@@ -519,7 +526,11 @@ SELECT * FROM result_cte;
                             codTransferredDate: row['cod_transferred_date_tmz'],
                             jnaCodTransferredDate: row['jna_cod_transferred_date_tmz'],
                             statusCompletedDate: row['status_completed_date_tmz'],
-                            trackingCodes: row["tracking_codes"],
+                            trackingCode: row["tracking_code"],
+                            sortCode:row["sort_code"],
+                            lineCode:row["line_code"],
+                            sortingLineCode:row["sorting_line_code"],
+                            dstStoreName:row["dst_store_name"],
                             fulfillmentStatus: row["fulfillment_status"],
                             fulfillmentStatusString: <string>AnOrderFulfillmentStatusToString[<AnOrderFulfillmentStatusEnum>row["fulfillment_status"]],
                             shippingStatus: row["shipping_status"],
@@ -590,9 +601,9 @@ SELECT * FROM result_cte;
                         values.push(order.spOrderParcelId);
                         plc.push(`sp_order_parcel_id=$${values.length}`);
                     }
-                    if (order.trackingCodes && order.trackingCodes.length > 0) {
-                        values.push(`{${order.trackingCodes.join(',')}}`);
-                        plc.push(`tracking_codes=$${values.length}`);
+                    if (order.trackingCode) {
+                        values.push(order.trackingCode);
+                        plc.push(`tracking_code=$${values.length}`);
                     }
                     if (order.codAmount) {
                         values.push(order.codAmount);
@@ -602,10 +613,10 @@ SELECT * FROM result_cte;
                         values.push(order.fulfillmentStatus);
                         plc.push(`fulfillment_status=$${values.length}`);
                     }
-                    if (order.shippingStatus) {
-                        values.push(order.shippingStatus);
-                        plc.push(`shipping_status=$${values.length}`);
-                    }
+                    // if (order.shippingStatus) {
+                    //     values.push(order.shippingStatus);
+                    //     plc.push(`shipping_status=$${values.length}`);
+                    // }
                     if (order.codStatus) {
                         values.push(order.codStatus);
                         plc.push(`cod_status=$${values.length}`);
@@ -626,6 +637,7 @@ SELECT * FROM result_cte;
                     if (plc.length > 0) {
                         queryText = `UPDATE public.order SET ${plc.join(", ")} WHERE an_order_id=$1;`;
                         await postgresService.getClient().query(queryText, values);
+                        
                     }
                 }
             }
@@ -637,10 +649,10 @@ SELECT * FROM result_cte;
         return {err, orders};
     }
 
-    async updateSpOrderParcelIdAndTrackingCode(anOrderId: string, spOrderParcelId: string, trackingCode: string) {
+    async updateSpOrderParcelIdAndtrackingCode(anOrderId: string, spOrderParcelId: string, trackingCode: string) {
         let err = NewCommonError();
         try {
-            const queryText = `UPDATE public.order SET sp_order_parcel_id=$1, tracking_codes[1]=$2, fulfillment_status=$3 WHERE an_order_id=$4 RETURNING an_order_id`;
+            const queryText = `UPDATE public.order SET sp_order_parcel_id=$1, tracking_code=$2, fulfillment_status=$3 WHERE an_order_id=$4 RETURNING an_order_id`;
             const values = [spOrderParcelId, trackingCode, AnOrderFulfillmentStatusEnum.PACKED, anOrderId];
             const {rowCount} = await postgresService.getClient().query(queryText, values);
             if (rowCount < 0) {

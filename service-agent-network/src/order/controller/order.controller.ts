@@ -31,6 +31,7 @@ class OrderController {
         /**
          * Aggregate items, item that have the same ProductCode, sum it up.
          * **/
+        
         let reqItemsTmp = req.body.items;
         let mapProductCodeQuantity: Map<string, number> = new Map<string, number>();
         for (const i of reqItemsTmp) {
@@ -78,6 +79,10 @@ class OrderController {
             }
             /**Check if all requested productCodes do exist.*/
             if (exist) {
+                req.body.sortCode = req.body.trackingDetail.sortCode
+                req.body.lineCode=req.body.trackingDetail.lineCode
+                req.body.sortingLineCode=req.body.trackingDetail.sortingLineCode
+                req.body.dstStoreName=req.body.trackingDetail.dstStoreName
                 log("req.body: %O", req.body)
                 log("reqItems: %O", reqItems)
                 let {order, err} = await orderService.create(req.body, reqItems);
@@ -254,12 +259,12 @@ class OrderController {
                         err
                     } = await orderService.getReferenceNoByAnOrderId(<string>item.anOrderId);
                     if (err.code === code.SUCCESS) {
-                        let trackingCodes = undefined;
+                        let trackingCode = undefined;
                         let status = undefined;
                         let transferredDate = undefined;
 
-                        if (item.trackingCodes && item.trackingCodes.length > 0) {
-                            trackingCodes = item.trackingCodes;
+                        if (item.trackingCode) {
+                            trackingCode = item.trackingCode;
                         }
                         if (item.jnaCodTransferredDate) {
                             status = anOrderStatusMap.TRANSFERRED;
@@ -270,7 +275,7 @@ class OrderController {
 
                         hookService.sendOrder({
                             referenceNo: referenceNo,
-                            trackingCode: trackingCodes,
+                            trackingCode: trackingCode,
                             status: status,
                             dateCod: transferredDate,
                         }, url);

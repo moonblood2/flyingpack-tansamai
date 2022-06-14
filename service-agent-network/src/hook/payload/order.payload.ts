@@ -11,6 +11,6 @@ export interface OrderPayload
         OrderParcelShapeModel {
     dimension?: number;
     items?: Array<ItemPayload>;
-    trackingCode?: Array<string>;
+    trackingCode?:string;
     dateCod?: string;
 }

@@ -221,7 +221,10 @@ const cancelAnOrder = (anOrderId) => {
     });
 }
 
-const createShippingOrder = (origin, orders) => {
+const createOrderByWebhook = (origin, orders) => {
+
+    console.log("orders");
+    console.log(orders);
     for (let i = 0; i < orders.length; i++) {
         orders[i].codAmount = parseFloat(orders[i].codAmount);
     }
@@ -236,6 +239,7 @@ const createShippingOrder = (origin, orders) => {
             },
         })
             .then(response => {
+                
                 resolve(response);
             })
             .catch(error => {
@@ -311,8 +315,7 @@ export {
     getOrderFulfillmentSummary,
     getOrderByReferenceNo,
     cancelAnOrder,
-
-    createShippingOrder,
+    createOrderByWebhook,
     createSerialNumbers,
     updateSerialNumbers,
 

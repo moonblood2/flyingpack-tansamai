@@ -76,8 +76,8 @@ export default {
         {key: "index", label: 'ลำดับ', style: {width: '50px'}},
         {key: "labels", label: 'สินค้า', style: {width: '150px', 'text-align': 'start'}},
         {key: "count", label: 'จำนวน', style: {width: '50px'}},
-        {key: "packedCount", label: 'ทำ', style: {width: '50px'}},
-        {key: "notPackedCount", label: 'ยังไม่ทำ', style: {width: '50px'}},
+        {key: "packedCount", label: 'จัดส่งแล้ว', style: {width: '50px'}},
+        {key: "notPackedCount", label: 'ยังไม่จัดส่ง', style: {width: '50px'}},
         {key: "cancelCount", label: 'ยกเลิก', style: {width: '50px'}},
       ],
     }

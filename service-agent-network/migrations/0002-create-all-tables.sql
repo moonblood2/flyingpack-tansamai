@@ -46,7 +46,7 @@ CREATE TABLE public."order" (
     status_completed_date date,
     cod_transferred_date date,
     packaged_imageg_url character varying(256) DEFAULT ''::character varying,
-    tracking_codes text[],
+    tracking_code character varying(30),
     jna_cod_transferred_date date
 );
 COMMENT ON COLUMN public."order".an_order_id IS 'an_order_id is an id of order table of AgenNetwork service';

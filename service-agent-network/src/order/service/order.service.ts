@@ -36,6 +36,7 @@ class OrderService {
             orderProducts.push({
                 anProductId: e.anProductId,
                 quantity: e.quantity,
+                anTrackingDetailId:e.anTrackingDetailId
             });
         }
         return await orderDao.addOrder(order, orderProducts);
@@ -147,7 +148,7 @@ class OrderService {
     }
 
     async updateSpOrderParcelIdAndTrackingCode(anOrderId: string, spOrderParcelId: string, trackingCode: string) {
-        return await orderDao.updateSpOrderParcelIdAndTrackingCode(anOrderId, spOrderParcelId, trackingCode);
+        return await orderDao.updateSpOrderParcelIdAndtrackingCode(anOrderId, spOrderParcelId, trackingCode);
     }
 
     async getReferenceNoByAnOrderId(anOrderId: string) {

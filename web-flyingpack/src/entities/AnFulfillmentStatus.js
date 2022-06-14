@@ -7,7 +7,7 @@ export const anFulfillmentStatus = {
 
 export const anFulfillmentStatusToString = {
     [anFulfillmentStatus.NOT_SET]: "-",
-    [anFulfillmentStatus.PACKED]: "ทำแล้ว",
-    [anFulfillmentStatus.NOT_PACKED]: "ยังไม่ทำ",
+    [anFulfillmentStatus.PACKED]: "จัดส่งแล้ว",
+    [anFulfillmentStatus.NOT_PACKED]: "ยังไม่จัดส่ง",
     [anFulfillmentStatus.CANCEL]: "ยกเลิก",
 }

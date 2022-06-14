@@ -3,13 +3,13 @@ import env from "@/constants/env";
 import "./middleware";
 
 // objectToRoboticString, parse object to Robotic's string format eg. {\"SKU4\": 1, \"SKU1\": 3}
-// const objectToRoboticString = (data) => {
-//     let pair = [];//Key and value in format like this: \"key\": value
-//     for (const key in data) {
-//         pair.push(`\\"${key}\\": ${data[key]}`);
-//     }
-//     return `{${pair.join(", ")}}`;
-// }
+const objectToRoboticString = (data) => {
+    let pair = [];//Key and value in format like this: \"key\": value
+    for (const key in data) {
+        pair.push(`\\"${key}\\": ${data[key]}`);
+    }
+    return `{${pair.join(", ")}}`;
+}
 
 export const takePhoto = (referenceNo) => {
     return new Promise((resolve, reject) => {
@@ -37,7 +37,7 @@ export const addOrder = (referenceNo, order) => {
             headers: {"Content-Type": "application/json"},
             data: {
                 'packing_no': referenceNo,
-                'packing_detail': order,
+                'packing_detail': objectToRoboticString(order),
             }
         })
             .then(response => {

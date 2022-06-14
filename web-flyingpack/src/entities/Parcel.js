@@ -40,6 +40,10 @@ export class Parcel {
                     height,
                     spOrderParcelShippop,
                     spOrderParcelShippopFlash,
+                    sortCode,
+                    lineCode,
+                    sortingLineCode,
+                    dstStoreName,
                 }) {
         this.type = parcelType.PARCEL;
         this.courierName = courierName || ""
@@ -49,6 +53,10 @@ export class Parcel {
         this.enableCOD = enableCOD || false
         this.codAmount = codAmount || 0.0 // float64
         this.trackingCode = trackingCode || ""
+        this.sortCode = sortCode
+        this.lineCode = lineCode
+        this.sortingLineCode = sortingLineCode
+        this.dstStoreName = dstStoreName
         //Create new one for deep clone instance.
         this.origin = origin ? new ContactInfo({
             name: origin.name,

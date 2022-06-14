@@ -235,12 +235,12 @@ export default {
             codStatus: anParcel.codStatus,
             referenceNo: anParcel.referenceNo,
             desName: anParcel.destination.name,
-            trackingCode: anParcel.trackingCodes.join(', '),
+            trackingCode: anParcel.trackingCode,
             codAmount: anParcel.codAmount,
-            bank: anParcel.anBankAccount.bank,
-            accountName: anParcel.anBankAccount.accountName,
-            accountNo: anParcel.anBankAccount.accountNo,
-            email: anParcel.anBankAccount.email,
+            bank: anParcel.bankAccount.bank,
+            accountName: anParcel.bankAccount.accountName,
+            accountNo: anParcel.bankAccount.accountNo,
+            email: anParcel.bankAccount.email,
           }
           items.push(item);
         }
@@ -415,18 +415,18 @@ export default {
         const anParcel = items[i].anParcel;
         data.push([
           i + 1,
-          anParcel.anBankAccount.accountName,
+          anParcel.bankAccount.accountName,
           anParcel.codAmount,
           anParcel.referenceNo.replace("ALE", ""),
           "",
-          anParcel.anBankAccount.accountNo,
-          `${anParcel.anBankAccount.fiCode}: ${anParcel.anBankAccount.fiName}`,
+          anParcel.bankAccount.accountNo,
+          `${anParcel.bankAccount.fiCode}: ${anParcel.bankAccount.fiName}`,
           "EMAIL",
           "",
-          anParcel.anBankAccount.email,
+          anParcel.bankAccount.email,
           "",
           "OUR",
-          anParcel.trackingCodes.join(', '),
+          anParcel.trackingCode,
           anParcel.destination.name,
         ]);
       }
