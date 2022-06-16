@@ -5,7 +5,7 @@ import qs from "qs";
 import "./middleware";
 
 // getOrderFulfillment use by each AgentNetwork Member.
-const getOrderFulfillment = (startDate, endDate, page = 1, perPage = 100, keyWord = "", fulfillmentStatus = "-1", courierCode = 0, productIds = []) => {
+const getOrderFulfillment = (startDate, endDate, page = 1, perPage = 100, keyWord = "", fulfillmentStatus = "-1", courierCode = 0, productIds = [], quantity = "") => {
     return new Promise((resolve, reject) => {
         axios({
             url: `${env.VUE_APP_SERVICE_AGENT_NETWORK_URL}/closed-api/order`,
@@ -20,6 +20,7 @@ const getOrderFulfillment = (startDate, endDate, page = 1, perPage = 100, keyWor
                 fulfillmentStatus: fulfillmentStatus,
                 courierCode: courierCode,
                 productIds: productIds,
+                quantity: quantity,
             },
             paramsSerializer: function (params) {
                 return qs.stringify(params, {arrayFormat: 'brackets'})

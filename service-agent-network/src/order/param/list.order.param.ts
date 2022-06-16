@@ -14,6 +14,7 @@ export interface ListOrderParam {
     fulfillmentStatus?: AnOrderFulfillmentStatusEnum;
     courierCode: number;
     productIds: Array<string>;
+    quantity: number;
 }
 
 export const parseListOrderParam = (req: express.Request): ListOrderParam => {
@@ -33,6 +34,7 @@ export const parseListOrderParam = (req: express.Request): ListOrderParam => {
     } else {
         productIds = [];
     }
+    let quantity = Number(<string> req.query.quantity)
 
     return {
         startDate: startDate,
@@ -46,5 +48,6 @@ export const parseListOrderParam = (req: express.Request): ListOrderParam => {
         fulfillmentStatus: fulfillmentStatus,
         courierCode: courierCode,
         productIds: productIds,
+        quantity: quantity,
     };
 }

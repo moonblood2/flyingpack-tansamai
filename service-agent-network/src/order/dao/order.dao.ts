@@ -1,27 +1,27 @@
 import postgresService from "../../common/service/postgres.service";
 
-import {OrderDto} from "../dto/order.model";
-import {OrderProductModel} from "../dto/orderProduct.model";
-import {OrderSummaryModel} from "../dto/orderSummary.model";
-import {OrderProductSummaryModel} from "../dto/orderProductSummary.model";
-import {BankAccountModel} from "../dto/bankAccount.model";
-import {AnOrderItemModel} from "../dto/anOrderItem.model";
-import {SerialNumberModel} from "../../serialNumber/dto/serialNumber.model";
+import { OrderDto } from "../dto/order.model";
+import { OrderProductModel } from "../dto/orderProduct.model";
+import { OrderSummaryModel } from "../dto/orderSummary.model";
+import { OrderProductSummaryModel } from "../dto/orderProductSummary.model";
+import { BankAccountModel } from "../dto/bankAccount.model";
+import { AnOrderItemModel } from "../dto/anOrderItem.model";
+import { SerialNumberModel } from "../../serialNumber/dto/serialNumber.model";
 
-import {ListOrderParam} from "../param/list.order.param";
-import {DateParam} from "../param/date.param";
-import {DateTypeEnum} from "../param/dateType.param";
+import { ListOrderParam } from "../param/list.order.param";
+import { DateParam } from "../param/date.param";
+import { DateTypeEnum } from "../param/dateType.param";
 
-import {AnOrderFulfillmentStatusEnum, AnOrderFulfillmentStatusToString} from "../dto/anOrderFulfillmentStatus.enum";
+import { AnOrderFulfillmentStatusEnum, AnOrderFulfillmentStatusToString } from "../dto/anOrderFulfillmentStatus.enum";
 
 import code from "../../common/common.code";
-import {CommonError, NewCommonError} from "../../common/common.error";
+import { CommonError, NewCommonError } from "../../common/common.error";
 
 import fiCodeToFiName from "../../constant/fiCode";
 
-import {v4 as uuidv4} from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import debug from "debug";
-import {AnCourierCodeEnum} from "../dto/anCourierCode.enum";
+import { AnCourierCodeEnum } from "../dto/anCourierCode.enum";
 
 const log: debug.IDebugger = debug('app:order-dao')
 
@@ -41,23 +41,23 @@ class OrderDao {
 
         let queryText: string = `SELECT * FROM public.order WHERE reference_no=$1`;
         try {
-            const {rows, rowCount} = await postgresService.getClient().query(queryText, [referenceNo]);
+            const { rows, rowCount } = await postgresService.getClient().query(queryText, [referenceNo]);
             if (rowCount > 0) {
                 anOrderId = rows[0]['an_order_id'];
             }
         } catch (err) {
             log(err)
             err = NewCommonError(code.ERR_INTERNAL);
-            return {err};
+            return { err };
         }
-        return {anOrderId, err};
+        return { anOrderId, err };
     }
 
     async addOrder(order: OrderDto, orderProducts: Array<OrderProductModel>) {
         order.anOrderId = uuidv4();
 
         let err: CommonError = NewCommonError();
-        console.log("bedore query : ",order.trackingCode);
+        console.log("bedore query : ", order.trackingCode);
         try {
             await postgresService.getClient().query("BEGIN");
 
@@ -88,8 +88,8 @@ class OrderDao {
                 order.sortingLineCode,
                 order.dstStoreName
             ];
-            console.log('queryText : ',queryText);
-            console.log('values : ',values);
+            console.log('queryText : ', queryText);
+            console.log('values : ', values);
             await postgresService.getClient().query(queryText, values);
 
             /**Insert each order_product*/
@@ -141,17 +141,17 @@ class OrderDao {
             LIMIT 1;
             `;
         try {
-            const {rows, rowCount} = await postgresService.getClient().query(queryText, [serialNumber]);
+            const { rows, rowCount } = await postgresService.getClient().query(queryText, [serialNumber]);
             if (rowCount > 0) {
                 exist = true
                 orderId = rows[0]["an_order_id"];
             }
         } catch (err) {
             err = NewCommonError(code.ERR_INTERNAL);
-            return {orderId, err, exist};
+            return { orderId, err, exist };
         }
 
-        return {orderId, err, exist}
+        return { orderId, err, exist }
     }
 
     static async getOrder(by: string, key: string) {
@@ -162,9 +162,9 @@ class OrderDao {
         if (by === "sp_order_parcel_id" || by === 'an_order_id') {
             andWhere = `AND (sp_order_parcel_id=$1 OR an_order_id=$1)`;
         } else if (by === "text") {
-            let {orderId, exist: serialNumberExist, err} = await OrderDao.getAnOrderIdBySerialNumber(key);
+            let { orderId, exist: serialNumberExist, err } = await OrderDao.getAnOrderIdBySerialNumber(key);
             if (err != null) {
-                return {order, err};
+                return { order, err };
             }
 
             if (serialNumberExist) {
@@ -198,7 +198,7 @@ ORDER BY p.product_code, aops.an_order_product_serial_number_id`;
         log(queryText)
         const values = [key];
         try {
-            const {rows, rowCount} = await postgresService.getClient().query(queryText, values);
+            const { rows, rowCount } = await postgresService.getClient().query(queryText, values);
             if (rowCount > 0) {
                 const row = rows[0];
                 order = {
@@ -253,7 +253,7 @@ ORDER BY p.product_code, aops.an_order_product_serial_number_id`;
             log(e);
             err = NewCommonError(code.ERR_INTERNAL);
         }
-        return {order, err}
+        return { order, err }
     }
 
     async getOrderBySpOrderParcelId(spOrderParcelId: string) {
@@ -269,6 +269,22 @@ ORDER BY p.product_code, aops.an_order_product_serial_number_id`;
     }
 
     async getOrders(params: ListOrderParam, isSorting: boolean, userId: string) {
+        // @tansamai Start
+        var quantity_str = params.quantity.toString();
+        var n_q = "";
+        if(params.quantity == 0){
+            n_q += "12345"
+        }else{
+            var f_q = quantity_str[0]
+            n_q += quantity_str
+            for (let i = 0; i < 5 - quantity_str.length; i++) {
+                n_q += f_q
+            }
+        }
+        
+        let andQuantity = `AND (op.quantity=` + n_q[0] + ` OR op.quantity=` + n_q[1] + ` OR op.quantity=` + n_q[2] + ` OR op.quantity=` + n_q[3] + ` OR op.quantity=` + n_q[4] + `)`;
+        // @tansamai End
+
         const offset = (params.page - 1) * params.perPage;
         const limit = params.perPage;
 
@@ -373,6 +389,7 @@ filter_order_cte AS
     ${whereDeletedAt}
     ${andWhereUser}
     ${andWhereSpOrderParcelId}
+    ${andQuantity}
     ${andWhereCreatedAt}
     ${andWhereKeyWord}
     ${andWhereCourierCode}
@@ -493,7 +510,7 @@ SELECT * FROM result_cte;
 `;
             }
 
-            const {rows, rowCount} = await postgresService.getClient().query(queryText, values);
+            const { rows, rowCount } = await postgresService.getClient().query(queryText, values);
             //Mapping orders. orders (reference_no) -> items (product_id) -> serialNumbers.
             //Each order has unique reference_no and contain item list (items).
             //Each items has unique product_id and contain serial numbers list (serialNumbers).
@@ -527,10 +544,10 @@ SELECT * FROM result_cte;
                             jnaCodTransferredDate: row['jna_cod_transferred_date_tmz'],
                             statusCompletedDate: row['status_completed_date_tmz'],
                             trackingCode: row["tracking_code"],
-                            sortCode:row["sort_code"],
-                            lineCode:row["line_code"],
-                            sortingLineCode:row["sorting_line_code"],
-                            dstStoreName:row["dst_store_name"],
+                            sortCode: row["sort_code"],
+                            lineCode: row["line_code"],
+                            sortingLineCode: row["sorting_line_code"],
+                            dstStoreName: row["dst_store_name"],
                             fulfillmentStatus: row["fulfillment_status"],
                             fulfillmentStatusString: <string>AnOrderFulfillmentStatusToString[<AnOrderFulfillmentStatusEnum>row["fulfillment_status"]],
                             shippingStatus: row["shipping_status"],
@@ -584,7 +601,7 @@ SELECT * FROM result_cte;
             err = NewCommonError(code.ERR_INTERNAL);
         }
 
-        return {orders, totalItem, err};
+        return { orders, totalItem, err };
     }
 
     async updateOrders(orders: Array<OrderDto>) {
@@ -637,7 +654,7 @@ SELECT * FROM result_cte;
                     if (plc.length > 0) {
                         queryText = `UPDATE public.order SET ${plc.join(", ")} WHERE an_order_id=$1;`;
                         await postgresService.getClient().query(queryText, values);
-                        
+
                     }
                 }
             }
@@ -646,7 +663,7 @@ SELECT * FROM result_cte;
             err = NewCommonError(code.ERR_INTERNAL);
         }
 
-        return {err, orders};
+        return { err, orders };
     }
 
     async updateSpOrderParcelIdAndtrackingCode(anOrderId: string, spOrderParcelId: string, trackingCode: string) {
@@ -654,7 +671,7 @@ SELECT * FROM result_cte;
         try {
             const queryText = `UPDATE public.order SET sp_order_parcel_id=$1, tracking_code=$2, fulfillment_status=$3 WHERE an_order_id=$4 RETURNING an_order_id`;
             const values = [spOrderParcelId, trackingCode, AnOrderFulfillmentStatusEnum.PACKED, anOrderId];
-            const {rowCount} = await postgresService.getClient().query(queryText, values);
+            const { rowCount } = await postgresService.getClient().query(queryText, values);
             if (rowCount < 0) {
                 log("Not found an_order_id %s", anOrderId);
                 err = NewCommonError(code.ERR_INTERNAL);
@@ -662,7 +679,7 @@ SELECT * FROM result_cte;
         } catch (e) {
             log(e);
         }
-        return {err};
+        return { err };
     }
 
     async getReferenceNoByAnOrderId(anOrderId: string) {
@@ -671,7 +688,7 @@ SELECT * FROM result_cte;
         try {
             const queryText = `SELECT reference_no FROM public.order WHERE an_order_id=$1`
             const values = [anOrderId];
-            const {rows, rowCount} = await postgresService.getClient().query(queryText, values);
+            const { rows, rowCount } = await postgresService.getClient().query(queryText, values);
             if (rowCount > 0) {
                 referenceNo = rows[0]["reference_no"];
             } else {
@@ -681,7 +698,7 @@ SELECT * FROM result_cte;
         } catch (e) {
             log(e);
         }
-        return {referenceNo, err};
+        return { referenceNo, err };
     }
 
     async getReferenceNoBySpOrderParcelId(spOrderParcelId: string) {
@@ -690,7 +707,7 @@ SELECT * FROM result_cte;
         try {
             const queryText = `SELECT reference_no FROM public.order WHERE sp_order_parcel_id=$1`
             const values = [spOrderParcelId];
-            const {rows, rowCount} = await postgresService.getClient().query(queryText, values);
+            const { rows, rowCount } = await postgresService.getClient().query(queryText, values);
             if (rowCount > 0) {
                 referenceNo = rows[0]["reference_no"];
             } else {
@@ -700,7 +717,7 @@ SELECT * FROM result_cte;
         } catch (e) {
             log(e);
         }
-        return {referenceNo, err};
+        return { referenceNo, err };
     }
 
     async getOrderProductsByAnOrderId(anOrderId: string, userId: string) {
@@ -716,7 +733,7 @@ INNER JOIN public.product p
 ON op.an_product_id=p.an_product_id
 WHERE o.user_id=$2 AND op.an_order_id=$1`
             const values = [anOrderId, userId];
-            const {rows} = await postgresService.getClient().query(queryText, values);
+            const { rows } = await postgresService.getClient().query(queryText, values);
             for (const row of rows) {
                 orderProducts.push({
                     userId: row["user_id"],
@@ -734,7 +751,7 @@ WHERE o.user_id=$2 AND op.an_order_id=$1`
             err = NewCommonError(code.ERR_INTERNAL);
         }
 
-        return {orderProducts, err};
+        return { orderProducts, err };
     }
 
     async getOrderSummary(userId: string, params: DateParam) {
@@ -772,7 +789,7 @@ FROM order_summary_cte
 GROUP BY labels
 ORDER BY labels`;
             const values = [userId, params.timeZone, params.startDate, params.endDate];
-            const {rows} = await postgresService.getClient().query(queryText, values);
+            const { rows } = await postgresService.getClient().query(queryText, values);
             for (const row of rows) {
                 if (row['labels'] !== null) {
                     orderSum.push({
@@ -789,7 +806,7 @@ ORDER BY labels`;
             log(e);
         }
 
-        return {orderSum, err};
+        return { orderSum, err };
     }
 
     async getOrderProductSummary(userId: string, params: DateParam) {
@@ -816,7 +833,7 @@ GROUP BY p.product_code
 ORDER BY p.product_code`;
 
             const values = [userId, params.timeZone, params.startDate, params.endDate];
-            const {rows} = await postgresService.getClient().query(queryText, values);
+            const { rows } = await postgresService.getClient().query(queryText, values);
             for (const row of rows) {
                 if (row['product_code'] !== null) {
                     orderProductSum.push({
@@ -830,7 +847,7 @@ ORDER BY p.product_code`;
             log(e);
         }
 
-        return {orderProductSum, err};
+        return { orderProductSum, err };
     }
 
     async updateOrderFulfillmentStatus(anOrderId: string, fulfillmentStatus: AnOrderFulfillmentStatusEnum) {
@@ -845,7 +862,7 @@ ORDER BY p.product_code`;
             err = NewCommonError(code.ERR_INTERNAL);
         }
 
-        return {err};
+        return { err };
     }
 }
 
