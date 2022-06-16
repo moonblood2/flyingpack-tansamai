@@ -95,9 +95,6 @@
               </b-form-group>
             </b-dropdown>
           </b-col>
-
-          <button @click="display_id">display</button>
-
           <b-col cols="3">
             <b-form-select
               v-model="form.fulfillmentOfRow"
@@ -224,7 +221,7 @@
               <b-button
                 :disabled="
                   data.item.fulfillmentStatus === 1 ||
-                    data.item.fulfillmentStatus === 3
+                  data.item.fulfillmentStatus === 3
                 "
                 variant="primary"
                 @click="onClickDo(data.index)"
@@ -651,7 +648,6 @@ export default {
                 let anParcel = parseAnParcel(e);
                 anParcel.origin = this.defaultOriginAddress;
                 items.push(anParcel);
-                console.log('inif');
               }
             }
           } else {
@@ -659,7 +655,6 @@ export default {
             anParcel.origin = this.defaultOriginAddress;
             items.push(anParcel);
             //console.log("anParcel : ", anParcel);
-            console.log('inelse');
           }
         }
         return [...items];
@@ -703,10 +698,6 @@ export default {
     onChangeRowTotal() {
       this.perPage = this.form.fulfillmentOfRow;
     },
-    display_id() {
-      console.log("in");
-      console.log(this.productsIdSelected);
-    },
     async onClickGetOrder() {
       this.loading.get = true;
       try {
@@ -744,12 +735,8 @@ export default {
 
     //onClickCreateOrder select order from selected item in table then request for created order API.
     async onClickCreateOrder() {
-      const {
-        selectedIndex,
-        anParcels,
-        selectedItems,
-        createdOrder,
-      } = this.selected;
+      const { selectedIndex, anParcels, selectedItems, createdOrder } =
+        this.selected;
       if (selectedItems.length <= 0) {
         return;
       }
@@ -805,13 +792,13 @@ export default {
                   orders[i].fulfillmentStatusString;
                 if (orders[i].spOrderParcelShippopFlash) {
                   const { spOrderParcelShippopFlash } = orders[i];
-                  this.items[
-                    selectedIndex[i]
-                  ].spOrderParcelShippopFlash = new SpOrderParcelShippopFlash({
-                    dstCode: spOrderParcelShippopFlash.dstCode,
-                    sortCode: spOrderParcelShippopFlash.sortCode,
-                    sortingLineCode: spOrderParcelShippopFlash.sortingLineCode,
-                  });
+                  this.items[selectedIndex[i]].spOrderParcelShippopFlash =
+                    new SpOrderParcelShippopFlash({
+                      dstCode: spOrderParcelShippopFlash.dstCode,
+                      sortCode: spOrderParcelShippopFlash.sortCode,
+                      sortingLineCode:
+                        spOrderParcelShippopFlash.sortingLineCode,
+                    });
                 }
               } else {
                 this.createOrderModal.failOrders.push({
@@ -835,9 +822,7 @@ export default {
         return;
       }
       console.log(parcels);
-      const key = Math.random()
-        .toString(36)
-        .substring(2, 7);
+      const key = Math.random().toString(36).substring(2, 7);
       this.$store.commit(LABEL_ADD_PARCEL, { key: key, parcels: parcels });
 
       let routeData = this.$router.resolve({
@@ -892,9 +877,8 @@ export default {
       if (ok) {
         // this.items[index]['trackingCode'] = this.editForm.trackingCode[0];
         this.items[index]["trackingCode"] = this.editForm.trackingCode;
-        this.items[index][
-          "fulfillmentStatus"
-        ] = this.editForm.fulfillmentStatus;
+        this.items[index]["fulfillmentStatus"] =
+          this.editForm.fulfillmentStatus;
         this.items[index]["fulfillmentStatusString"] =
           anFulfillmentStatusToString[this.editForm.fulfillmentStatus];
       }
