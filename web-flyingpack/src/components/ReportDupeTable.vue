@@ -201,7 +201,7 @@
             </b-badge>
           </template>
           <template #cell(destinationBrief)="data">
-            {{ `${data.item.destination.name}(${data.item.desPhoneNumber})` }}
+            {{ `${data.item.destination.name} (${data.item.desPhoneNumber})` }}
           </template>
           <template #cell(trackingCode)="data">
             {{ `${data.item.trackingCode}` }}
