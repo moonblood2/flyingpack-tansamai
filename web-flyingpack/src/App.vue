@@ -28,6 +28,7 @@
       <router-link v-if="checkPermission(UserRoles.SHOP)" :to="paths.reportOrderProduct">รายงานสินค้าอื่นๆ</router-link>
       <router-link v-if="checkPermission(UserRoles.AGENT_NETWORK_MEMBER)" :to="paths.dashBoardFulfillment">ภาพรวม fulfillment</router-link>
       <router-link v-if="checkPermission(UserRoles.AGENT_NETWORK_MEMBER)" :to="paths.reportFulfillment">รายงาน fulfillment</router-link>
+      <router-link v-if="checkPermission(UserRoles.AGENT_NETWORK_MEMBER)" :to="paths.reportDupe">ตรวจสอบรายการซ้ำ</router-link>
       <router-link v-if="checkPermission(UserRoles.AGENT_NETWORK_MEMBER)" :to="paths.orderFulfillmentChecker">fulfillment checker</router-link>
       <router-link v-if="checkPermission(UserRoles.ACCOUNTING)" :to="paths.accountingReportFulfillment">รายงาน fulfillment</router-link>
       <router-link v-if="checkPermission(UserRoles.ACCOUNTING)" :to="paths.accountingReportCod">รายงาน COD</router-link>

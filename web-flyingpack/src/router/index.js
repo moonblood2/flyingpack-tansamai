@@ -8,6 +8,7 @@ import Pos from '@/views/Pos';
 import ReportOrderParcel from '@/views/ReportOrderParcel';
 import ReportOrderProduct from '@/views/ReportOrderProduct';
 import ReportFulfillment from "@/views/ReportFulfillment";
+import ReportDupe from "@/views/ReportDupe";
 import Label from '@/views/Label';
 import DashboardFulfillment from "@/views/DashboardFulfillment";
 import OrderFulfillmentChecker from "@/views/OrderFulfillmentChecker";
@@ -25,6 +26,7 @@ export const paths = {
     reportOrderParcel: '/report-order-parcel',
     reportOrderProduct: '/report-order-product',
     reportFulfillment: '/report-fulfillment',
+    reportDupe: '/report-dupe',
     label: '/label',
     dashBoardFulfillment: '/dashboard-fulfillment',
     orderFulfillmentChecker: '/order-fulfillment-checker',
@@ -53,6 +55,7 @@ const includeHeader = (path) => [
     paths.reportOrderParcel,
     paths.reportOrderProduct,
     paths.reportFulfillment,
+    paths.reportDupe,
     paths.dashBoardFulfillment,
     paths.orderFulfillmentChecker,
     paths.accountingReportFulfillment,
@@ -63,6 +66,7 @@ const includeSidebar = (path) => [
     paths.reportOrderParcel,
     paths.reportOrderProduct,
     paths.reportFulfillment,
+    paths.reportDupe,
     paths.dashBoardFulfillment,
     paths.orderFulfillmentChecker,
     paths.accountingReportFulfillment,
@@ -124,6 +128,11 @@ const routes = [
     {
         path: '/report-fulfillment',
         component: ReportFulfillment,
+        beforeEnter: ifAuthenticated(UserRoles.AGENT_NETWORK_MEMBER)
+    },
+    {
+        path: '/report-dupe',
+        component: ReportDupe,
         beforeEnter: ifAuthenticated(UserRoles.AGENT_NETWORK_MEMBER)
     },
     {
