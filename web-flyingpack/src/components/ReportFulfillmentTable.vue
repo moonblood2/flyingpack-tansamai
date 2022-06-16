@@ -74,16 +74,30 @@
               text="สินค้า"
               variant="outline-secondary"
             >
-              <b-form-checkbox-group
+              <!-- <b-form-checkbox-group
                 v-model="form.productsIds"
                 :options="productOptions"
                 disabled-field="notEnabled"
                 style="padding-left: 10px"
                 text-field="name"
                 value-field="item"
-              ></b-form-checkbox-group>
+              ></b-form-checkbox-group> -->
+
+              <!-- Tansamai ADD -->
+              <b-form-group v-slot="{ ariaDescribedby }">
+                <b-form-checkbox-group
+                  id="filter_prod_group"
+                  v-model="productsIdSelected"
+                  :options="productOptions"
+                  :aria-describedby="ariaDescribedby"
+                  name="filter_prod"
+                ></b-form-checkbox-group>
+              </b-form-group>
             </b-dropdown>
           </b-col>
+
+          <button @click="display_id">display</button>
+
           <b-col cols="3">
             <b-form-select
               v-model="form.fulfillmentOfRow"
@@ -128,6 +142,10 @@
                 </b-button>
               </b-overlay>
               <b-dropdown text="ใบปะหน้า">
+                <b-dropdown-item
+                  @click="onClickLabel('sticker-4x6', selected.selectedItems)"
+                  >Sticker4x6</b-dropdown-item
+                >
                 <b-dropdown-item
                   @click="onClickLabel('sticker-8x8', selected.selectedItems)"
                   >Sticker8x8</b-dropdown-item
@@ -206,7 +224,7 @@
               <b-button
                 :disabled="
                   data.item.fulfillmentStatus === 1 ||
-                  data.item.fulfillmentStatus === 3
+                    data.item.fulfillmentStatus === 3
                 "
                 variant="primary"
                 @click="onClickDo(data.index)"
@@ -481,6 +499,13 @@ export default {
         { value: AnCourier.EMS_WORLD.code, text: AnCourier.EMS_WORLD.text },
         { value: AnCourier.MESSENGER.code, text: AnCourier.MESSENGER.text },
       ],
+      productOptions: [
+        { value: 1, text: "SERUM:1" },
+        { value: 2, text: "SERUM:2" },
+        { value: 3, text: "SERUM:3" },
+        { value: 4, text: "SERUM:4" },
+        { value: 5, text: "SERUM:5" },
+      ],
 
       //Form data
       form: {
@@ -492,8 +517,12 @@ export default {
         fulfillmentStatus: -1,
         courierCode: 0,
         fulfillmentOfRow: -1,
-        productsIds: [],
+        // productsIds: [],
       },
+
+      // Tansamai ADD
+      productsIdSelected: [],
+      productIds: [],
 
       //Table
       fields: [
@@ -614,10 +643,24 @@ export default {
         let items = [];
         for (let i = 0; i < this.anOrder.orders.length; i++) {
           const e = this.anOrder.orders[i];
-          let anParcel = parseAnParcel(e);
-          anParcel.origin = this.defaultOriginAddress;
-          items.push(anParcel);
-          console.log("anParcel : ", anParcel);
+
+          // Tansamai ADD
+          if (this.productsIdSelected.length > 0) {
+            for (let j = 0; j < this.productsIdSelected.length; j++) {
+              if (e.items[0].quantity == this.productsIdSelected[j]) {
+                let anParcel = parseAnParcel(e);
+                anParcel.origin = this.defaultOriginAddress;
+                items.push(anParcel);
+                console.log('inif');
+              }
+            }
+          } else {
+            let anParcel = parseAnParcel(e);
+            anParcel.origin = this.defaultOriginAddress;
+            items.push(anParcel);
+            //console.log("anParcel : ", anParcel);
+            console.log('inelse');
+          }
         }
         return [...items];
       },
@@ -643,22 +686,26 @@ export default {
       }
       return { anParcels, selectedIndex, selectedItems, createdOrder };
     },
-    productOptions: function () {
-      let productOptions = [];
-      if (this.products) {
-        for (const product of this.products) {
-          productOptions.push({
-            item: product.anProductId,
-            name: product.productCode,
-          });
-        }
-      }
-      return [...productOptions];
-    },
+    // productOptions: function() {
+    //   let productOptions = [];
+    //   if (this.products) {
+    //     for (const product of this.products) {
+    //       productOptions.push({
+    //         item: product.anProductId,
+    //         name: product.productCode,
+    //       });
+    //     }
+    //   }
+    //   return [...productOptions];
+    // },
   },
   methods: {
-    onChangeRowTotal(){
+    onChangeRowTotal() {
       this.perPage = this.form.fulfillmentOfRow;
+    },
+    display_id() {
+      console.log("in");
+      console.log(this.productsIdSelected);
     },
     async onClickGetOrder() {
       this.loading.get = true;
@@ -671,7 +718,8 @@ export default {
           this.form.keyWord,
           this.form.fulfillmentStatus,
           this.form.courierCode,
-          this.form.productsIds
+          // this.form.productsIds
+          this.productsIds
         );
         if (res.data.data) {
           this.anOrder = res.data.data;
@@ -696,8 +744,12 @@ export default {
 
     //onClickCreateOrder select order from selected item in table then request for created order API.
     async onClickCreateOrder() {
-      const { selectedIndex, anParcels, selectedItems, createdOrder } =
-        this.selected;
+      const {
+        selectedIndex,
+        anParcels,
+        selectedItems,
+        createdOrder,
+      } = this.selected;
       if (selectedItems.length <= 0) {
         return;
       }
@@ -753,13 +805,13 @@ export default {
                   orders[i].fulfillmentStatusString;
                 if (orders[i].spOrderParcelShippopFlash) {
                   const { spOrderParcelShippopFlash } = orders[i];
-                  this.items[selectedIndex[i]].spOrderParcelShippopFlash =
-                    new SpOrderParcelShippopFlash({
-                      dstCode: spOrderParcelShippopFlash.dstCode,
-                      sortCode: spOrderParcelShippopFlash.sortCode,
-                      sortingLineCode:
-                        spOrderParcelShippopFlash.sortingLineCode,
-                    });
+                  this.items[
+                    selectedIndex[i]
+                  ].spOrderParcelShippopFlash = new SpOrderParcelShippopFlash({
+                    dstCode: spOrderParcelShippopFlash.dstCode,
+                    sortCode: spOrderParcelShippopFlash.sortCode,
+                    sortingLineCode: spOrderParcelShippopFlash.sortingLineCode,
+                  });
                 }
               } else {
                 this.createOrderModal.failOrders.push({
@@ -783,7 +835,9 @@ export default {
         return;
       }
       console.log(parcels);
-      const key = Math.random().toString(36).substring(2, 7);
+      const key = Math.random()
+        .toString(36)
+        .substring(2, 7);
       this.$store.commit(LABEL_ADD_PARCEL, { key: key, parcels: parcels });
 
       let routeData = this.$router.resolve({
@@ -838,8 +892,9 @@ export default {
       if (ok) {
         // this.items[index]['trackingCode'] = this.editForm.trackingCode[0];
         this.items[index]["trackingCode"] = this.editForm.trackingCode;
-        this.items[index]["fulfillmentStatus"] =
-          this.editForm.fulfillmentStatus;
+        this.items[index][
+          "fulfillmentStatus"
+        ] = this.editForm.fulfillmentStatus;
         this.items[index]["fulfillmentStatusString"] =
           anFulfillmentStatusToString[this.editForm.fulfillmentStatus];
       }
@@ -901,3 +956,12 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.form-group {
+  margin: 0px;
+}
+#filter_prod_group {
+  padding: 0.5rem 1rem;
+}
+</style>

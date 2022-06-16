@@ -198,6 +198,7 @@ export default {
   border: 1px solid black;
   border-bottom: 0;
   width: 100%;
+  text-align: left;
 }
 .title div {
   padding-left: 5px;
@@ -217,6 +218,7 @@ export default {
   width: 100%;
   height: 20%;
   font-size: 12px;
+  text-align: left;
 }
 .address2 {
   display: flex;
@@ -227,6 +229,7 @@ export default {
   width: 100%;
   height: 20%;
   font-size: 12px;
+  text-align: left;
 }
 .address1 div,
 .address2 div {
@@ -318,6 +321,7 @@ export default {
   height: 100%;
   font-size: 15px;
   padding: 2px;
+  text-align: left;
 }
 .foot-print-date {
   display: flex;

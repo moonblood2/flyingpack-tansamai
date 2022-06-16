@@ -21,6 +21,7 @@
     "qs": "^6.9.6",
     "randomstring": "^1.1.5",
     "vue": "^2.6.12",
+    "vue-qrcode-component": "^2.1.1",
     "vue-router": "^3.2.0",
     "vue-thailand-address-autocomplete": "^0.1.1",
     "vuex": "^3.4.0",

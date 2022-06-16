@@ -18,7 +18,6 @@
         height="50"
         width="100"
       />
-
     </div>
     <div class="barcode">
       <img :id="id" height="40" width="300"/>

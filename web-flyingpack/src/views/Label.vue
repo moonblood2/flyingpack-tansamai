@@ -1,26 +1,26 @@
 <template>
-  <div v-if="size === 'sticker-8x8'" id="monochrome">
-    <Sticker8x8
-        v-for="(parcel, index) in parcels"
-        :id="`label_${index}`"
-        :key="`sticker-8x8_${index}`"
-        :parcel="parcel"
-    />
-  </div>
-  <div v-else-if="size === 'sticker-4x6'">
+  <div v-if="size === 'sticker-4x6'" id="monochrome">
     <Sticker4x6
-        v-for="(parcel, index) in parcels"
-        :id="`label_${index}`"
-        :key="`sticker-4x6_${index}`"
-        :parcel="parcel"
+      v-for="(parcel, index) in parcels"
+      :id="`label_${index}`"
+      :key="`sticker-4x6_${index}`"
+      :parcel="parcel"
     />
   </div>
-   <div v-else-if="size === 'sticker-100x75'">
+  <div v-else-if="size === 'sticker-8x8'">
+    <Sticker8x8
+      v-for="(parcel, index) in parcels"
+      :id="`label_${index}`"
+      :key="`sticker-8x8_${index}`"
+      :parcel="parcel"
+    />
+  </div>
+  <div v-else-if="size === 'sticker-100x75'">
     <Sticker100x75
-        v-for="(parcel, index) in parcels"
-        :id="`label_${index}`"
-        :key="`sticker-100x75_${index}`"
-        :parcel="parcel"
+      v-for="(parcel, index) in parcels"
+      :id="`label_${index}`"
+      :key="`sticker-100x75_${index}`"
+      :parcel="parcel"
     />
   </div>
 </template>
@@ -35,12 +35,12 @@ export default {
   components: {
     Sticker8x8,
     Sticker4x6,
-    Sticker100x75
+    Sticker100x75,
   },
   data() {
     return {
       size: "sticker-8x8",
-    }
+    };
   },
   created() {
     if (this.$route.query.size) {
@@ -48,10 +48,10 @@ export default {
     }
   },
   computed: {
-    parcels: function () {
-      const {key} = this.$route.params;
+    parcels: function() {
+      const { key } = this.$route.params;
       return this.$store.state.label.parcel[key];
-    }
-  }
-}
+    },
+  },
+};
 </script>

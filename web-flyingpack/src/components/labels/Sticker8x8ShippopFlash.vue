@@ -204,6 +204,9 @@ export default {
 }
 
 @media print {
+  .sticker-flash{
+    margin: auto;
+  }
   .sticker-flash .sorting .b2 {
     color: white;
     background: black;
