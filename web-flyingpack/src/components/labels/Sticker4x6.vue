@@ -54,8 +54,8 @@
         <b>{{ parcel.destination.postcode }}</b>
       </div>
       <div class="code2">
-        <qr-code :text="parcel.referenceNo" size="70" error-level="L">
-        </qr-code>
+        <VueQRCodeComponent :text="parcel.referenceNo" size="70" error-level="L">
+        </VueQRCodeComponent>
       </div>
     </div>
 
@@ -98,7 +98,10 @@
       </span>
     </div>
     <div class="foot-print-date">
-      <div class="note-open">***กรุณาถ่ายวีดีโอ ขณะเปิดกล่องพัสดุ โดยไม่ตัดต่อ เพื่อเป็นหลักฐานในกรณีขอเคลมสินค้า</div>
+      <div class="note-open">
+        ***กรุณาถ่ายวีดีโอ ขณะเปิดกล่องพัสดุ โดยไม่ตัดต่อ
+        เพื่อเป็นหลักฐานในกรณีขอเคลมสินค้า
+      </div>
     </div>
   </div>
 </template>
@@ -109,9 +112,7 @@ import { parcelType, typeOfParcel } from "@/entities/Parcel";
 import JsBarcode from "jsbarcode";
 
 // Tansamai ADD
-import Vue from "vue";
 import VueQRCodeComponent from "vue-qrcode-component";
-Vue.component("qr-code", VueQRCodeComponent);
 
 import "@/styles/common.css";
 export default {
@@ -293,7 +294,7 @@ export default {
   padding: 0.5rem 1px;
   text-align: center;
 }
-.shipping-code span{
+.shipping-code span {
   font-size: 12px;
 }
 .note-open {
@@ -355,17 +356,11 @@ export default {
   font-size: 8px;
 }
 
-@page {
-    width: 1.97in;
-    height: 1.57in;
-    margin: 0;
-    padding: 0;
-}
 @media print {
-    html, body {
-        width: 1.97in;
-        height: 1.97in;
-    }
+  @page {
+    size: 5.5in 8.5in;
+    size: landscape;
+  }
 }
 
 @media print {
