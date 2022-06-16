@@ -201,7 +201,7 @@
             </b-badge>
           </template>
           <template #cell(destinationBrief)="data">
-            {{ `${data.item.destination.name}` }}
+            {{ `${data.item.destination.name}(${data.item.desPhoneNumber})` }}
           </template>
           <template #cell(trackingCode)="data">
             {{ `${data.item.trackingCode}` }}
@@ -638,6 +638,23 @@ export default {
         )
           return [];
         //Map to order parcel.
+        let all_phone_tel = [];
+        let dupe_phone_tel = [];
+        for (let i = 0; i < this.anOrder.orders.length; i++) {
+          const e = this.anOrder.orders[i];
+
+          // Tansamai ADD
+          let anParcel = parseAnParcel(e);
+          anParcel.origin = this.defaultOriginAddress;
+          // console.log(anParcel.desPhoneNumber);
+          if(all_phone_tel.includes(anParcel.desPhoneNumber)){
+            dupe_phone_tel.push(anParcel.desPhoneNumber)
+          }else{
+            all_phone_tel.push(anParcel.desPhoneNumber);
+          }
+        }
+        // console.log(dupe_phone_tel);
+
         let items = [];
         for (let i = 0; i < this.anOrder.orders.length; i++) {
           const e = this.anOrder.orders[i];
@@ -645,8 +662,15 @@ export default {
           // Tansamai ADD
           let anParcel = parseAnParcel(e);
           anParcel.origin = this.defaultOriginAddress;
-          items.push(anParcel);
+          if(dupe_phone_tel.includes(anParcel.desPhoneNumber)){
+            items.push(anParcel);
+          }
+          
+          // console.log(anParcel.desPhoneNumber);
+          // console.log(anParcel.sortCode);
         }
+
+        items.sort((a,b)=> (a.desPhoneNumber > b.desPhoneNumber ? 1 : -1))
         return [...items];
       },
       set(value) {
