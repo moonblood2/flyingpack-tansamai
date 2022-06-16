@@ -519,6 +519,7 @@ export default {
 
       // Tansamai ADD
       productsIdSelected: [],
+      productsIdsStr: "",
       productIds: [],
 
       //Table
@@ -642,20 +643,9 @@ export default {
           const e = this.anOrder.orders[i];
 
           // Tansamai ADD
-          if (this.productsIdSelected.length > 0) {
-            for (let j = 0; j < this.productsIdSelected.length; j++) {
-              if (e.items[0].quantity == this.productsIdSelected[j]) {
-                let anParcel = parseAnParcel(e);
-                anParcel.origin = this.defaultOriginAddress;
-                items.push(anParcel);
-              }
-            }
-          } else {
-            let anParcel = parseAnParcel(e);
-            anParcel.origin = this.defaultOriginAddress;
-            items.push(anParcel);
-            //console.log("anParcel : ", anParcel);
-          }
+          let anParcel = parseAnParcel(e);
+          anParcel.origin = this.defaultOriginAddress;
+          items.push(anParcel);
         }
         return [...items];
       },
@@ -701,6 +691,12 @@ export default {
     async onClickGetOrder() {
       this.loading.get = true;
       try {
+        // Tansamai ADD
+        this.productsIdsStr = "";
+        for (let i = 0; i < this.productsIdSelected.length; i++) {
+          this.productsIdsStr += this.productsIdSelected[i];
+        }
+
         const res = await getOrderFulfillment(
           `${this.form.startDate} ${this.form.startTime}`,
           `${this.form.endDate} ${this.form.endTime}`,
@@ -709,8 +705,11 @@ export default {
           this.form.keyWord,
           this.form.fulfillmentStatus,
           this.form.courierCode,
+
+          // Tansamai ADD
           // this.form.productsIds
-          this.productsIds
+          this.productsIds,
+          this.productsIdsStr
         );
         if (res.data.data) {
           this.anOrder = res.data.data;
