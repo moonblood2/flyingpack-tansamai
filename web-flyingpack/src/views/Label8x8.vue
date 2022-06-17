@@ -1,16 +1,5 @@
 <template>
-  <div v-if="size === 'sticker-4x6'">
-    <div class="preview">
-      <button id="btn-preview" @click="print_preview">Print Preview</button>
-    </div>
-    <Sticker4x6
-      v-for="(parcel, index) in parcels"
-      :id="`label_${index}`"
-      :key="`sticker-4x6_${index}`"
-      :parcel="parcel"
-    />
-  </div>
-  <div v-else-if="size === 'sticker-8x8'">
+  <div v-if="size === 'sticker-8x8'">
     <div class="preview">
       <button id="btn-preview" @click="print_preview">Print Preview</button>
     </div>
@@ -21,35 +10,21 @@
       :parcel="parcel"
     />
   </div>
-  <div v-else-if="size === 'sticker-100x75'">
-    <div class="preview">
-      <button id="btn-preview" @click="print_preview">Print Preview</button>
-    </div>
-    <Sticker100x75
-      v-for="(parcel, index) in parcels"
-      :id="`label_${index}`"
-      :key="`sticker-100x75_${index}`"
-      :parcel="parcel"
-    />
+  <div v-else>
+    <h1>Sticker Not Found</h1>
   </div>
 </template>
 
 <script>
 import Sticker8x8 from "@/components/labels/Sticker8x8";
-import Sticker4x6 from "@/components/labels/Sticker4x6";
-import Sticker100x75 from "@/components/labels/Sticker100x75";
 
 export default {
-  name: "Label",
+  name: "Label8x8",
   components: {
     Sticker8x8,
-    Sticker4x6,
-    Sticker100x75,
   },
   data() {
-    return {
-      size: "sticker-4x8",
-    };
+    return {};
   },
   created() {
     if (this.$route.query.size) {
@@ -70,7 +45,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .preview {
   width: 100%;
   display: inline-block;
@@ -97,11 +72,24 @@ export default {
 }
 
 @page {
-  size: A4;
+  size: 0.32in 0.32in;
+  margin: 0mm !important;
+  padding: 0mm !important;
 }
 @media print {
   .preview {
     display: none !important;
+  }
+  .sticker-flash {
+    width: 100%;
+    height: 100%;
+    margin: 0px !important;
+    border: 0px !important;
+  }
+
+  .sticker-flash .logo img {
+    width: 30%;
+    height: 25px;
   }
 }
 </style>

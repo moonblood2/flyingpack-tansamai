@@ -284,6 +284,15 @@
           <b-dropdown-item
             @click="
               onClickLabel(
+                'sticker-4x6',
+                createOrderModal.successOrders.map((x) => x.order)
+              )
+            "
+            >Sticker4x6</b-dropdown-item
+          >
+          <b-dropdown-item
+            @click="
+              onClickLabel(
                 'sticker-8x8',
                 createOrderModal.successOrders.map((x) => x.order)
               )
@@ -824,13 +833,29 @@ export default {
       const key = Math.random().toString(36).substring(2, 7);
       this.$store.commit(LABEL_ADD_PARCEL, { key: key, parcels: parcels });
 
-      let routeData = this.$router.resolve({
-        name: "Label",
-        params: { key: key },
-      });
-      const url = `${routeData.href}?size=${size}`;
-      console.log(url);
-      window.open(url, "_blank");
+      // Tansamai ADD
+      if (size == "sticker-8x8") {
+        let routeData = this.$router.resolve({
+          name: "Label8x8",
+          params: { key: key },
+        });
+        const url = `${routeData.href}?size=${size}`;
+        window.open(url, "_blank");
+      } else if (size == "sticker-100x75") {
+        let routeData = this.$router.resolve({
+          name: "Label100x75",
+          params: { key: key },
+        });
+        const url = `${routeData.href}?size=${size}`;
+        window.open(url, "_blank");
+      } else {
+        let routeData = this.$router.resolve({
+          name: "Label4x6",
+          params: { key: key },
+        });
+        const url = `${routeData.href}?size=${size}`;
+        window.open(url, "_blank");
+      }
     },
 
     //onClickDo select item in table and link selected item with ParcelForm.

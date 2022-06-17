@@ -1,27 +1,5 @@
 <template>
-  <div v-if="size === 'sticker-4x6'">
-    <div class="preview">
-      <button id="btn-preview" @click="print_preview">Print Preview</button>
-    </div>
-    <Sticker4x6
-      v-for="(parcel, index) in parcels"
-      :id="`label_${index}`"
-      :key="`sticker-4x6_${index}`"
-      :parcel="parcel"
-    />
-  </div>
-  <div v-else-if="size === 'sticker-8x8'">
-    <div class="preview">
-      <button id="btn-preview" @click="print_preview">Print Preview</button>
-    </div>
-    <Sticker8x8
-      v-for="(parcel, index) in parcels"
-      :id="`label_${index}`"
-      :key="`sticker-8x8_${index}`"
-      :parcel="parcel"
-    />
-  </div>
-  <div v-else-if="size === 'sticker-100x75'">
+  <div v-if="size === 'sticker-100x75'">
     <div class="preview">
       <button id="btn-preview" @click="print_preview">Print Preview</button>
     </div>
@@ -32,23 +10,22 @@
       :parcel="parcel"
     />
   </div>
+  <div v-else>
+    <h1>Sticker Not Found</h1>
+  </div>
 </template>
 
 <script>
-import Sticker8x8 from "@/components/labels/Sticker8x8";
-import Sticker4x6 from "@/components/labels/Sticker4x6";
 import Sticker100x75 from "@/components/labels/Sticker100x75";
 
 export default {
-  name: "Label",
+  name: "Label100x75",
   components: {
-    Sticker8x8,
-    Sticker4x6,
     Sticker100x75,
   },
   data() {
     return {
-      size: "sticker-4x8",
+      size: "sticker-100x75",
     };
   },
   created() {
@@ -96,12 +73,34 @@ export default {
   background-color: #0069d9;
 }
 
+
 @page {
-  size: A4;
+  size: 3.9in 3in;
+  margin: 0mm !important;
+  padding: 0mm !important;
 }
+
 @media print {
   .preview {
     display: none !important;
+  }
+  .sticker {
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0px !important;
+    border: 0px !important;
+  }
+  .note-open {
+    font-size: 8px !important;
+  }
+  .address1, .address2{
+    font-size: 12px;
+  }
+  .product {
+    font-size: 10px;
+  }
+  .cod {
+    height: 90% !important;
   }
 }
 </style>

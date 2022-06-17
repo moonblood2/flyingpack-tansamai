@@ -54,7 +54,11 @@
         <b>{{ parcel.destination.postcode }}</b>
       </div>
       <div class="code2">
-        <VueQRCodeComponent :text="parcel.referenceNo" size="70" error-level="L">
+        <VueQRCodeComponent
+          :text="parcel.referenceNo"
+          size="70"
+          error-level="L"
+        >
         </VueQRCodeComponent>
       </div>
     </div>
@@ -115,6 +119,7 @@ import JsBarcode from "jsbarcode";
 import VueQRCodeComponent from "vue-qrcode-component";
 
 import "@/styles/common.css";
+
 export default {
   name: "Sticker4x6",
   props: {
@@ -124,6 +129,7 @@ export default {
     parcel: Object,
     codDescription: String,
     timestamp: String,
+    printpaper: String,
   },
   components: {
     ReferenceNoBarcode,
@@ -354,20 +360,5 @@ export default {
   display: flex;
   justify-content: space-between;
   font-size: 8px;
-}
-
-@page {
-  size: 4in 6in !important;
-  margin: 0mm !important;
-  padding: 0mm !important;
-}
-
-@media print{
-  .sticker{
-    width: 100%;
-    height: 100%;
-    margin: 0px !important;
-    border: 0px !important;
-  }
 }
 </style>

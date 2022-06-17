@@ -92,75 +92,75 @@ export default {
 <!-- Tansamai ADD -->
 
 <template>
-<div class="sticker-flash">
-  <div class="logo monochrome">
-    <ReferenceNoBarcode
-      v-if="
-        showReferenceNoBarcode &&
-        typeOfParcel(parcel) === parcelType.AN_PARCEL
-      "
-      :id="`${id}-reference-no`"
-      :height="36"
-      :reference-no="parcel.referenceNo"
-      :width="126"
-    />
-    <img
-      v-else-if="
-        showProviderLogo || typeOfParcel(parcel) === parcelType.PARCEL
-      "
-      :src="require('@/assets/logo/provider/shippop.png')"
-      height="15"
-      width="100"
-    />
-    <img
-      :src="require('@/assets/logo/courier/flash_express.png')"
-      height="15"
-      width="100"
-    />
-  </div>
-  <div class="barcode">
-    <img :id="id" height="40" width="300" />
-    <b>{{ this.parcel.trackingCode }}</b>
-  </div>
-  <div class="origin">
-    <b>ผู้ส่ง</b>
-    {{ `${parcel.origin.name}  (${parcel.origin.phoneNumber})` }}
-    {{
-      `${parcel.origin.address}  ${parcel.origin.district}  ${parcel.origin.state}  ${parcel.origin.province}`
-    }}
-    <b>{{ parcel.origin.postcode }}</b>
-  </div>
-  <div class="destination">
-    <span class="first-line">
-      <b>ผู้รับ</b>
-      {{ `${parcel.destination.name}  (${parcel.destination.phoneNumber})` }}
-    </span>
-    {{
-      `${parcel.destination.address}  ${parcel.destination.district}  ${parcel.destination.state}  ${parcel.destination.province}`
-    }}
-    <b>{{ parcel.destination.postcode }}</b>
-  </div>
-  <div v-if="parcel.spOrderParcelShippopFlash" class="sorting">
-    <div class="b1">
-      <b>{{ parcel.spOrderParcelShippopFlash.sortCode }}</b> <br />
-      <b>{{ parcel.spOrderParcelShippopFlash.dstCode }}</b>
+  <div class="sticker-flash">
+    <div class="logo monochrome">
+      <ReferenceNoBarcode
+        v-if="
+          showReferenceNoBarcode &&
+          typeOfParcel(parcel) === parcelType.AN_PARCEL
+        "
+        :id="`${id}-reference-no`"
+        :height="36"
+        :reference-no="parcel.referenceNo"
+        :width="126"
+      />
+      <img
+        v-else-if="
+          showProviderLogo || typeOfParcel(parcel) === parcelType.PARCEL
+        "
+        :src="require('@/assets/logo/provider/shippop.png')"
+        height="15"
+        width="100"
+      />
+      <img
+        :src="require('@/assets/logo/courier/flash_express.png')"
+        height="15"
+        width="100"
+      />
     </div>
-    <div class="b2" style="background: black; color: white">
-      {{ parcel.spOrderParcelShippopFlash.sortingLineCode }}
+    <div class="barcode">
+      <img :id="id" height="40" width="300" />
+      <b>{{ this.parcel.trackingCode }}</b>
     </div>
-  </div>
-  <div class="other">
-    <div class="item-list">
-      <span v-for="(v, i) of parcel.items" :key="i" class="item">
-        {{ v.productCode }} (<b>{{ v.quantity }}</b
-        >),
+    <div class="origin">
+      <b>ผู้ส่ง</b>
+      {{ `${parcel.origin.name}  (${parcel.origin.phoneNumber})` }}
+      {{
+        `${parcel.origin.address}  ${parcel.origin.district}  ${parcel.origin.state}  ${parcel.origin.province}`
+      }}
+      <b>{{ parcel.origin.postcode }}</b>
+    </div>
+    <div class="destination">
+      <span class="first-line">
+        <b>ผู้รับ</b>
+        {{ `${parcel.destination.name}  (${parcel.destination.phoneNumber})` }}
       </span>
+      {{
+        `${parcel.destination.address}  ${parcel.destination.district}  ${parcel.destination.state}  ${parcel.destination.province}`
+      }}
+      <b>{{ parcel.destination.postcode }}</b>
     </div>
-    <div class="cod">
-      {{ codDescription }}
+    <div v-if="parcel.spOrderParcelShippopFlash" class="sorting">
+      <div class="b1">
+        <b>{{ parcel.spOrderParcelShippopFlash.sortCode }}</b> <br />
+        <b>{{ parcel.spOrderParcelShippopFlash.dstCode }}</b>
+      </div>
+      <div class="b2" style="background: black; color: white">
+        {{ parcel.spOrderParcelShippopFlash.sortingLineCode }}
+      </div>
+    </div>
+    <div class="other">
+      <div class="item-list">
+        <span v-for="(v, i) of parcel.items" :key="i" class="item">
+          {{ v.productCode }} (<b>{{ v.quantity }}</b
+          >),
+        </span>
+      </div>
+      <div class="cod">
+        {{ codDescription }}
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -173,34 +173,34 @@ import JsBarcode from "jsbarcode";
 import "@/styles/common.css";
 
 export default {
-name: "Sticker8x8FLash",
-props: {
-  id: String,
-  showProviderLogo: Boolean,
-  showReferenceNoBarcode: Boolean,
-  parcel: Object,
-  codDescription: String,
-},
-components: {
-  ReferenceNoBarcode,
-},
-data() {
-  return {
-    parcelType: parcelType,
-  };
-},
-mounted() {
-  JsBarcode(`#${this.id}`, this.parcel.trackingCode, {
-    format: "CODE128",
-    width: 10,
-    height: 100,
-    margin: 0,
-    displayValue: false,
-  });
-},
-methods: {
-  typeOfParcel: typeOfParcel,
-},
+  name: "Sticker8x8",
+  props: {
+    id: String,
+    showProviderLogo: Boolean,
+    showReferenceNoBarcode: Boolean,
+    parcel: Object,
+    codDescription: String,
+  },
+  components: {
+    ReferenceNoBarcode,
+  },
+  data() {
+    return {
+      parcelType: parcelType,
+    };
+  },
+  mounted() {
+    JsBarcode(`#${this.id}`, this.parcel.trackingCode, {
+      format: "CODE128",
+      width: 10,
+      height: 100,
+      margin: 0,
+      displayValue: false,
+    });
+  },
+  methods: {
+    typeOfParcel: typeOfParcel,
+  },
 };
 </script>
 
@@ -240,7 +240,7 @@ methods: {
   text-align: center;
 }
 
-.sticker-flash .barcode img{
+.sticker-flash .barcode img {
   width: 100%;
 }
 
@@ -304,25 +304,5 @@ methods: {
   text-align: center;
   font-size: 14px;
   font-weight: bold;
-}
-
-@page {
-  size: 0.32in !important;
-  margin: 0mm !important;
-  padding: 0mm !important;
-}
-
-@media print{
-  .sticker-flash{
-    width: 100%;
-    height: 100%;
-    margin: 0px !important;
-    border: 0px !important;
-  }
-
-  .sticker-flash .logo img{
-    width: 30%;
-    height: 25px;
-  }
 }
 </style>

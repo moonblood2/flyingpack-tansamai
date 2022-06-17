@@ -328,31 +328,4 @@ export default {
   justify-content: space-between;
   font-size: 8px;
 }
-
-@page {
-  size: 3.93701in 3in !important;
-  margin: 0mm !important;
-  padding: 0mm !important;
-}
-
-@media print {
-  .sticker {
-    width: 100% !important;
-    height: 100% !important;
-    margin: 0px !important;
-    border: 0px !important;
-  }
-  .note-open {
-    font-size: 8px !important;
-  }
-  .address1, .address2{
-    font-size: 12px;
-  }
-  .product {
-    font-size: 10px;
-  }
-  .cod {
-    height: 90% !important;
-  }
-}
 </style>

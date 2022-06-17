@@ -9,7 +9,13 @@ import ReportOrderParcel from '@/views/ReportOrderParcel';
 import ReportOrderProduct from '@/views/ReportOrderProduct';
 import ReportFulfillment from "@/views/ReportFulfillment";
 import ReportDupe from "@/views/ReportDupe";
+
+// Tansamai ADD
 import Label from '@/views/Label';
+import Label4x6 from '@/views/Label4x6';
+import Label8x8 from '@/views/Label8x8';
+import Label100x75 from '@/views/Label100x75';
+
 import DashboardFulfillment from "@/views/DashboardFulfillment";
 import OrderFulfillmentChecker from "@/views/OrderFulfillmentChecker";
 import AccountingReportFulfillment from "@/views/AccountingReportFulfillment";
@@ -27,7 +33,11 @@ export const paths = {
     reportOrderProduct: '/report-order-product',
     reportFulfillment: '/report-fulfillment',
     reportDupe: '/report-dupe',
+    // Tansamai ADD
     label: '/label',
+    label4x6: '/Label4x6',
+    label8x8: '/Label8x8',
+    label100x75: '/Label100x75',
     dashBoardFulfillment: '/dashboard-fulfillment',
     orderFulfillmentChecker: '/order-fulfillment-checker',
     accountingReportFulfillment: '/accounting-report-fulfillment',
@@ -142,6 +152,24 @@ const routes = [
         beforeEnter: ifAuthenticated(UserRoles.SHOP | UserRoles.AGENT_NETWORK_MEMBER),
     },
     {
+        path: '/label4x6/:key',
+        name: 'Label4x6',
+        component: Label4x6,
+        beforeEnter: ifAuthenticated(UserRoles.SHOP | UserRoles.AGENT_NETWORK_MEMBER),
+    },
+    {
+        path: '/label8x8/:key',
+        name: 'Label8x8',
+        component: Label8x8,
+        beforeEnter: ifAuthenticated(UserRoles.SHOP | UserRoles.AGENT_NETWORK_MEMBER),
+    },
+    {
+        path: '/label100x75/:key',
+        name: 'Label100x75',
+        component: Label100x75,
+        beforeEnter: ifAuthenticated(UserRoles.SHOP | UserRoles.AGENT_NETWORK_MEMBER),
+    },
+    {
         path: `${paths.fulfillmentPackingSlip}/:key`,
         name: "PackingSlip",
         component: FulfillmentPackingSlip,
@@ -176,7 +204,12 @@ const router = new VueRouter({
 });
 
 router.afterEach((to) => {
-    if (!to.path.includes(paths.label) && !to.path.includes(paths.fulfillmentPackingSlip)) {
+    if (!to.path.includes(paths.label) && 
+    // Tansamai ADD
+    !to.path.includes(paths.label4x6) && 
+    !to.path.includes(paths.label8x8) && 
+    !to.path.includes(paths.label100x75) && 
+    !to.path.includes(paths.fulfillmentPackingSlip)) {
         import('bootstrap/dist/css/bootstrap.min.css');
         import('bootstrap-vue/dist/bootstrap-vue.min.css');
     }

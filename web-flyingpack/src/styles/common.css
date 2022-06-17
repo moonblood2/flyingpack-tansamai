@@ -83,6 +83,6 @@ p.tracking {
     padding-right: 10px;
 }
 
-.monochrome {
+/* .monochrome {
     filter: grayscale(1) contrast(2) brightness(0.5) !important;
-}
+} */
