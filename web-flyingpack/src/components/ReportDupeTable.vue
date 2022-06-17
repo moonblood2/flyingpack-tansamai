@@ -8,176 +8,39 @@
         <b-row style="margin-bottom: 10px">
           <b-col cols="3">
             <b-form-input v-model="form.startDate" type="date"></b-form-input>
-            <b-form-timepicker
-              v-model="form.startTime"
-              :hour12="false"
-              no-close-button
-            >
+            <b-form-timepicker v-model="form.startTime" :hour12="false" no-close-button>
             </b-form-timepicker>
           </b-col>
           <b-col cols="3">
             <b-form-input v-model="form.endDate" type="date"></b-form-input>
-            <b-form-timepicker
-              v-model="form.endTime"
-              :hour12="false"
-              no-close-button
-            >
+            <b-form-timepicker v-model="form.endTime" :hour12="false" no-close-button>
             </b-form-timepicker>
           </b-col>
-          <b-col cols="3">
-            <b-form-input
-              v-model="form.keyWord"
-              cols="3"
-              placeholder="ref..., track..., ชื่อผู้ส่ง"
-              type="text"
-            ></b-form-input>
-            <b-button @click="onClickExportSerialNumber" variant="success"
-              >serial number</b-button
-            >
-          </b-col>
-          <b-col cols="2">
-            <b-form-select
-              v-model="form.fulfillmentStatus"
-              :options="fulfillmentStatusOptions"
-            ></b-form-select>
-          </b-col>
           <b-col cols="1">
-            <b-overlay
-              :show="loading.get"
-              class="d-inline-block"
-              opacity="0.4"
-              spinner-small
-              spinner-variant="primary"
-            >
-              <b-button
-                class="search-box"
-                size="lg"
-                variant="primary"
-                @click="onClickGetOrder"
-              >
+            <b-overlay :show="loading.get" class="d-inline-block" opacity="0.4" spinner-small spinner-variant="primary">
+              <b-button class="search-box" size="lg" variant="primary" @click="onClickGetOrder">
                 <b-icon aria-label="Help" class="search" icon="search"></b-icon>
               </b-button>
             </b-overlay>
           </b-col>
         </b-row>
         <b-row>
-          <b-col cols="3">
-            <b-form-select
-              v-model="form.courierCode"
-              :options="courierCodeOptions"
-            ></b-form-select>
-          </b-col>
-          <b-col cols="3">
-            <b-dropdown
-              id="product-dropdown"
-              dropright
-              text="สินค้า"
-              variant="outline-secondary"
-            >
-              <!-- <b-form-checkbox-group
-                v-model="form.productsIds"
-                :options="productOptions"
-                disabled-field="notEnabled"
-                style="padding-left: 10px"
-                text-field="name"
-                value-field="item"
-              ></b-form-checkbox-group> -->
-
-              <!-- Tansamai ADD -->
-              <b-form-group v-slot="{ ariaDescribedby }">
-                <b-form-checkbox-group
-                  id="filter_prod_group"
-                  v-model="productsIdSelected"
-                  :options="productOptions"
-                  :aria-describedby="ariaDescribedby"
-                  name="filter_prod"
-                ></b-form-checkbox-group>
-              </b-form-group>
-            </b-dropdown>
-          </b-col>
-          <b-col cols="3">
-            <b-form-select
-              v-model="form.fulfillmentOfRow"
-              :options="fulfillmentOfRowOptions"
-              @change="onChangeRowTotal"
-            ></b-form-select>
-          </b-col>
-          <b-col
-            cols="3"
-            style="
+          <b-col cols="3" style="
               display: flex;
               align-items: center;
               justify-content: flex-end;
-            "
-          >
-            <b>ทั้งหมด {{ anOrder.totalItem }} รายการ</b>
+            ">
+            <b>ทั้งหมด {{ totalDupe }} รายการ</b>
           </b-col>
         </b-row>
         <hr />
-        <b-row>
-          <b-col cols="4" style="display: flex; justify-content: flex-start">
-            <b-button-group>
-              <b-button variant="info" @click="onClickSelectAll">All</b-button>
-              <b-button @click="onClickClearSelected">Clear</b-button>
-            </b-button-group>
-          </b-col>
-          <b-col cols="4"></b-col>
-          <b-col cols="4" style="display: flex; justify-content: flex-end">
-            <b-button-group>
-              <b-overlay
-                :show="loading.createOrder"
-                opacity="0.4"
-                spinner-small
-                spinner-variant="primary"
-              >
-                <b-button
-                  :disabled="disableCreateOrderBtn"
-                  variant="info"
-                  @click="onClickCreateOrder"
-                >
-                  ทำรายการ
-                </b-button>
-              </b-overlay>
-              <b-dropdown text="ใบปะหน้า">
-                <b-dropdown-item
-                  @click="onClickLabel('sticker-4x6', selected.selectedItems)"
-                  >Sticker4x6</b-dropdown-item
-                >
-                <b-dropdown-item
-                  @click="onClickLabel('sticker-8x8', selected.selectedItems)"
-                  >Sticker8x8</b-dropdown-item
-                >
-                <b-dropdown-item
-                  @click="
-                    onClickLabel('sticker-100x75', selected.selectedItems)
-                  "
-                  >Sticker100x75</b-dropdown-item
-                >
-              </b-dropdown>
-            </b-button-group>
-          </b-col>
-        </b-row>
       </div>
       <div class="tb">
-        <b-table
-          id="report-fulfillment-table"
-          ref="report-fulfillment-table"
-          :busy="loading.get"
-          :fields="fields"
-          :fixed="true"
-          :items="items"
-          :show-empty="true"
-          :sticky-header="true"
-          empty-text="ไม่มีรายการให้แสดง"
-          selectable
-          style="max-height: 100%"
-        >
+        <b-table id="report-fulfillment-table" ref="report-fulfillment-table" :busy="loading.get" :fields="fields"
+          :fixed="true" :items="items" :show-empty="true" :sticky-header="true" empty-text="ไม่มีรายการให้แสดง"
+          selectable style="max-height: 100%">
           <template #table-colgroup="scope">
-            <col
-              v-for="field in scope.fields"
-              :key="field.key"
-              :style="{ ...field.style }"
-            />
+            <col v-for="field in scope.fields" :key="field.key" :style="{ ...field.style }" />
           </template>
           <template #cell(index)="data">
             {{ perPage * (anOrder.currentPage - 1) + (data.index + 1) }}
@@ -186,46 +49,38 @@
             {{ data.item.createdAt.split(".")[0] }}
           </template>
           <template #cell(status)="data">
-            <b-badge
-              :variant="
-                data.item.fulfillmentStatus === 1
-                  ? 'success'
-                  : data.item.fulfillmentStatus === 2
+            <b-badge :variant="
+              data.item.fulfillmentStatus === 1
+                ? 'success'
+                : data.item.fulfillmentStatus === 2
                   ? ''
                   : data.item.fulfillmentStatus === 3
-                  ? 'danger'
-                  : 'warning'
-              "
-            >
+                    ? 'danger'
+                    : 'warning'
+            ">
               {{ data.item.fulfillmentStatusString }}
             </b-badge>
           </template>
           <template #cell(destinationBrief)="data">
+            <div :style="`background:${data.item.color}; color: white;text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;`">
             {{ `${data.item.destination.name} (${data.item.desPhoneNumber})` }}
+            </div>
           </template>
           <template #cell(trackingCode)="data">
             {{ `${data.item.trackingCode}` }}
           </template>
           <template #cell(itemsBrief)="data">
-            <p
-              v-for="(v, i) in data.item.items"
-              :key="i"
-              style="font-size: 16px"
-            >
+            <p v-for="(v, i) in data.item.items" :key="i" style="font-size: 16px">
               {{ `${v["productCode"]}: ${v["quantity"]}` }}
             </p>
           </template>
           <template #cell(handle)="data">
             <b-button-group>
               <!-- disable if status is packed or cancel or  -->
-              <b-button
-                :disabled="
-                  data.item.fulfillmentStatus === 1 ||
-                  data.item.fulfillmentStatus === 3
-                "
-                variant="primary"
-                @click="onClickDo(data.index)"
-              >
+              <b-button :disabled="
+                data.item.fulfillmentStatus === 1 ||
+                data.item.fulfillmentStatus === 3
+              " variant="primary" @click="onClickDo(data.index)">
                 ทำ
               </b-button>
               <!-- disable if status is not packed or cancel -->
@@ -233,11 +88,8 @@
                 แก้
               </b-button>
               <!-- disable if status is cancel -->
-              <b-button
-                :disabled="data.item.fulfillmentStatus === 3"
-                variant="danger"
-                @click="onClickCancel(data.index)"
-              >
+              <b-button :disabled="data.item.fulfillmentStatus === 3" variant="danger"
+                @click="onClickCancel(data.index)">
                 ยกเลิก
               </b-button>
             </b-button-group>
@@ -245,60 +97,33 @@
         </b-table>
       </div>
       <div style="display: flex">
-        <b-pagination
-          v-model="anOrder.currentPage"
-          :per-page="perPage"
-          :total-rows="anOrder.totalItem"
-          class="mx-auto"
-          @change="onChangePage"
-        ></b-pagination>
+        <b-pagination v-model="anOrder.currentPage" :per-page="perPage" :total-rows="anOrder.totalItem" class="mx-auto"
+          @change="onChangePage"></b-pagination>
       </div>
     </div>
-    <ParcelForm
-      ref="parcel-form"
-      :busy="loading.createOrder"
-      :disabled-cancel-button="loading.createOrder"
-      :loading-ok-button="loading.createOrder"
-      :on-cancel="onCancelParcelForm"
-      :on-submit="onSubmitParcelForm"
-      :parcel-form="parcelForm"
-      :show-origin="false"
-      :disable-validation="true"
-    />
-    <b-modal
-      id="create-order-result-modal"
-      :no-close-on-backdrop="true"
-      title="ผลการทำรายการ"
-    >
+    <ParcelForm ref="parcel-form" :busy="loading.createOrder" :disabled-cancel-button="loading.createOrder"
+      :loading-ok-button="loading.createOrder" :on-cancel="onCancelParcelForm" :on-submit="onSubmitParcelForm"
+      :parcel-form="parcelForm" :show-origin="false" :disable-validation="true" />
+    <b-modal id="create-order-result-modal" :no-close-on-backdrop="true" title="ผลการทำรายการ">
       <h5>สำเร็จ ({{ createOrderModal.successOrders.length }})</h5>
       <div>
         <p v-for="(e, i) in createOrderModal.successOrders" :key="i">
           {{ e.order.referenceNo }}
         </p>
-        <b-dropdown
-          class="w-100 p-3"
-          text="ใบปะหน้า"
-          variant="info"
-          :disabled="createOrderModal.successOrders.length === 0"
-        >
-          <b-dropdown-item
-            @click="
-              onClickLabel(
-                'sticker-8x8',
-                createOrderModal.successOrders.map((x) => x.order)
-              )
-            "
-            >Sticker8x8</b-dropdown-item
-          >
-          <b-dropdown-item
-            @click="
-              onClickLabel(
-                'sticker-100x75',
-                createOrderModal.successOrders.map((x) => x.order)
-              )
-            "
-            >Sticker100x75</b-dropdown-item
-          >
+        <b-dropdown class="w-100 p-3" text="ใบปะหน้า" variant="info"
+          :disabled="createOrderModal.successOrders.length === 0">
+          <b-dropdown-item @click="
+            onClickLabel(
+              'sticker-8x8',
+              createOrderModal.successOrders.map((x) => x.order)
+            )
+          ">Sticker8x8</b-dropdown-item>
+          <b-dropdown-item @click="
+            onClickLabel(
+              'sticker-100x75',
+              createOrderModal.successOrders.map((x) => x.order)
+            )
+          ">Sticker100x75</b-dropdown-item>
         </b-dropdown>
       </div>
       <h5>ไม่สำเร็จ ({{ createOrderModal.failOrders.length }})</h5>
@@ -308,83 +133,42 @@
         </p>
       </div>
     </b-modal>
-    <b-modal
-      v-if="selectedCancelIndex !== -1"
-      id="cancel-confirm-modal"
-      :busy="loading.cancelOrder"
-      :title="
-        selectedCancelIndex !== -1
-          ? `ต้องการยกเลิก ${items[selectedCancelIndex].referenceNo} ?`
-          : 'เลือกก่อน'
-      "
-    >
+    <b-modal id="cancel-confirm-modal" :busy="loading.cancelOrder" :title="
+      selectedCancelIndex !== -1
+        ? `ต้องการยกเลิก ${items[selectedCancelIndex].referenceNo} ?`
+        : 'เลือกก่อน'
+    ">
       <template #modal-footer="{ cancel }">
-        <b-button :disabled="loading.createOrder" @click="cancel"
-          >ยกเลิก</b-button
-        >
-        <b-overlay
-          :show="loading.cancelOrder"
-          class="d-inline-block"
-          opacity="0.4"
-          spinner-small
-          spinner-variant="primary"
-        >
-          <b-button variant="info" @click="onClickConfirmCancelOrder"
-            >ตกลง</b-button
-          >
+        <b-button :disabled="loading.createOrder" @click="cancel">ยกเลิก</b-button>
+        <b-overlay :show="loading.cancelOrder" class="d-inline-block" opacity="0.4" spinner-small
+          spinner-variant="primary">
+          <b-button variant="info" @click="onClickConfirmCancelOrder">ตกลง</b-button>
         </b-overlay>
       </template>
     </b-modal>
-    <b-modal
-      v-if="selectedEditIndex !== -1"
-      id="edit-confirm-modal"
-      :busy="loading.editOrder"
-      :title="
-        selectedEditIndex !== -1
-          ? `ต้องการแก้ไข ${items[selectedEditIndex].referenceNo} ?`
-          : 'เลือกก่อน'
-      "
-    >
+    <b-modal id="edit-confirm-modal" :busy="loading.editOrder" :title="
+      selectedEditIndex !== -1
+        ? `ต้องการแก้ไข ${items[selectedEditIndex].referenceNo} ?`
+        : 'เลือกก่อน'
+    ">
       <div>
         <div style="display: flex; justify-content: space-between">
           <h6>Tracking Code:</h6>
-          <b-button variant="success" @click="onClickEdit_AddTrackingCode()"
-            >+</b-button
-          >
+          <b-button variant="success" @click="onClickEdit_AddTrackingCode()">+</b-button>
         </div>
-        <div
-          v-for="(v, i) in editForm.trackingCode"
-          :key="i"
-          style="display: flex"
-        >
-          <b-input
-            placeholder="trackingCode"
-            v-model="editForm.trackingCode[i]"
-            type="text"
-          ></b-input>
-          <b-button variant="danger" @click="onClickEdit_RemoveTrackingCode(i)"
-            >-</b-button
-          >
+        <div v-for="(v, i) in editForm.trackingCode" :key="i" style="display: flex">
+          <b-input placeholder="trackingCode" v-model="editForm.trackingCode[i]" type="text"></b-input>
+          <b-button variant="danger" @click="onClickEdit_RemoveTrackingCode(i)">-</b-button>
         </div>
       </div>
       <div>
         <p>สถานะ Fulfillment</p>
-        <b-form-select
-          v-model="editForm.fulfillmentStatus"
-          :options="fulfillmentStatusOptions"
-        ></b-form-select>
+        <b-form-select v-model="editForm.fulfillmentStatus" :options="fulfillmentStatusOptions"></b-form-select>
       </div>
       <template #modal-footer="{ cancel }">
-        <b-button :disabled="loading.editOrder" @click="cancel"
-          >ยกเลิก</b-button
-        >
-        <b-overlay
-          :show="loading.editOrder"
-          class="d-inline-block"
-          opacity="0.4"
-          spinner-small
-          spinner-variant="primary"
-        >
+        <b-button :disabled="loading.editOrder" @click="cancel">ยกเลิก</b-button>
+        <b-overlay :show="loading.editOrder" class="d-inline-block" opacity="0.4" spinner-small
+          spinner-variant="primary">
           <b-button variant="info" @click="onClickConfirmEdit">ตกลง</b-button>
         </b-overlay>
       </template>
@@ -442,6 +226,7 @@ export default {
   data() {
     return {
       //Loading status
+      totalDupe: 0,
       loading: {
         get: false,
         createOrder: false,
@@ -647,9 +432,9 @@ export default {
           let anParcel = parseAnParcel(e);
           anParcel.origin = this.defaultOriginAddress;
           // console.log(anParcel.desPhoneNumber);
-          if(all_phone_tel.includes(anParcel.desPhoneNumber)){
+          if (all_phone_tel.includes(anParcel.desPhoneNumber)) {
             dupe_phone_tel.push(anParcel.desPhoneNumber)
-          }else{
+          } else {
             all_phone_tel.push(anParcel.desPhoneNumber);
           }
         }
@@ -662,15 +447,18 @@ export default {
           // Tansamai ADD
           let anParcel = parseAnParcel(e);
           anParcel.origin = this.defaultOriginAddress;
-          if(dupe_phone_tel.includes(anParcel.desPhoneNumber)){
+          anParcel.color = "#" + anParcel.desPhoneNumber.slice(0, 6);
+          if (dupe_phone_tel.includes(anParcel.desPhoneNumber)) {
             items.push(anParcel);
           }
-          
+
           // console.log(anParcel.desPhoneNumber);
           // console.log(anParcel.sortCode);
         }
-
-        items.sort((a,b)=> (a.desPhoneNumber > b.desPhoneNumber ? 1 : -1))
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        this.totalDupe = items.length;
+        items.sort((a, b) => (a.desPhoneNumber > b.desPhoneNumber ? 1 : -1))
+        // console.log(items);
         return [...items];
       },
       set(value) {
@@ -910,8 +698,9 @@ export default {
     },
 
     onClickCancel(index) {
-      this.$bvModal.show("cancel-confirm-modal");
       this.selectedCancelIndex = index;
+      this.$bvModal.show("cancel-confirm-modal");
+
     },
     async onClickConfirmCancelOrder() {
       this.loading.cancelOrder = true;
@@ -955,9 +744,8 @@ export default {
       const wsName = "Sheet1";
       XLSX.utils.book_append_sheet(wb, ws, wsName);
       /**Write file and save.*/
-      const fileName = `serial-number[${this.form.startDate}-${
-        this.form.endDate
-      }][${Date.now()}].xlsx`;
+      const fileName = `serial-number[${this.form.startDate}-${this.form.endDate
+        }][${Date.now()}].xlsx`;
       XLSX.writeFile(wb, fileName);
     },
   },
@@ -968,7 +756,20 @@ export default {
 .form-group {
   margin: 0px;
 }
+
 #filter_prod_group {
   padding: 0.5rem 1rem;
+}
+
+.first {
+  background-color: blue
+}
+
+.second {
+  background-color: red
+}
+
+.third {
+  background-color: green
 }
 </style>
