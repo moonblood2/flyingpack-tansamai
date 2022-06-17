@@ -356,20 +356,18 @@ export default {
   font-size: 8px;
 }
 
-@media print {
-  @page {
-    size: 5.5in 8.5in;
-    size: landscape;
-  }
+@page {
+  size: 4in 6in !important;
+  margin: 0mm !important;
+  padding: 0mm !important;
 }
 
-@media print {
-  .sticker {
-    width: 50%;
-    margin: auto;
-    text-align: center;
-    font-size: 14px;
-    font-weight: bold;
+@media print{
+  .sticker{
+    width: 100%;
+    height: 100%;
+    margin: 0px !important;
+    border: 0px !important;
   }
 }
 </style>

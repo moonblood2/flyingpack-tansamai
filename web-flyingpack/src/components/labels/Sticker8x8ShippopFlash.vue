@@ -191,26 +191,4 @@ export default {
   font-size: 14px;
   font-weight: bold;
 }
-
-@media screen {
-  .sticker-flash .barcode {
-    margin-bottom: 2mm;
-  }
-  .sticker-flash .sorting .b1 {
-    width: 60%;
-    font-size: 12px;
-    text-align: center;
-  }
-}
-
-@media print {
-  .sticker-flash{
-    margin: auto;
-  }
-  .sticker-flash .sorting .b2 {
-    color: white;
-    background: black;
-    -webkit-print-color-adjust: exact;
-  }
-}
 </style>
