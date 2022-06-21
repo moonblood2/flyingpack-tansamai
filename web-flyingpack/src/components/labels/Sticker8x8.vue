@@ -204,18 +204,27 @@ export default {
 };
 </script>
 
+<style>
+/* @page {
+  size: 3.2in !important;
+  margin: 0px !important;
+  padding: 0px !important;
+} */
+</style>
+
 <style scoped>
 .sticker-flash {
   width: 3.2in;
   height: 3.2in;
   padding: 1mm;
-  background-color: white;
+  /* background-color: white; */
   margin: 0px auto 10px auto;
   overflow: hidden;
   position: relative;
   box-sizing: border-box;
   page-break-after: always;
   border: 1px solid #666666;
+  background-color: #fff;
 }
 
 .sticker-flash .logo {

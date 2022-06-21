@@ -113,6 +113,10 @@ export default {
     parcel: Object,
     codDescription: String,
     timestamp: String,
+    paperSize: {
+      type: String,
+      default: '3.9in 3in !important'
+    }
   },
   components: {
     ReferenceNoBarcode,
@@ -154,6 +158,14 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+/* @page {
+  size: 3.9in 3in !important;
+  margin: 0px !important;
+  padding: 0px !important;
+} */
+</style>
 
 <style scoped>
 .sticker {

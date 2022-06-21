@@ -129,7 +129,6 @@ export default {
     parcel: Object,
     codDescription: String,
     timestamp: String,
-    printpaper: String,
   },
   components: {
     ReferenceNoBarcode,
@@ -146,7 +145,6 @@ export default {
       width: 10,
       height: 100,
       margin: 0,
-      displayValue: false,
     });
   },
   methods: {

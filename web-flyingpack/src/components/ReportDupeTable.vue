@@ -26,7 +26,7 @@
         </b-row>
         <b-row>
           <b-col cols="3" style="
-              display: flex;
+              display: inline-block;
               align-items: center;
               justify-content: flex-end;
             ">
