@@ -233,11 +233,8 @@
                 แก้
               </b-button>
               <!-- disable if status is cancel -->
-              <b-button
-                :disabled="data.item.fulfillmentStatus === 3"
-                variant="danger"
-                @click="onClickCancel(data.index)"
-              >
+              <b-button :disabled="data.item.fulfillmentStatus === 3" variant="danger"
+                @click="onClickCancel(data.index)">
                 ยกเลิก
               </b-button>
             </b-button-group>
@@ -318,7 +315,6 @@
       </div>
     </b-modal>
     <b-modal
-      v-if="selectedCancelIndex !== -1"
       id="cancel-confirm-modal"
       :busy="loading.cancelOrder"
       :title="
@@ -345,7 +341,6 @@
       </template>
     </b-modal>
     <b-modal
-      v-if="selectedEditIndex !== -1"
       id="edit-confirm-modal"
       :busy="loading.editOrder"
       :title="
@@ -911,8 +906,8 @@ export default {
     },
 
     onClickCancel(index) {
-      this.$bvModal.show("cancel-confirm-modal");
       this.selectedCancelIndex = index;
+      this.$bvModal.show("cancel-confirm-modal");
     },
     async onClickConfirmCancelOrder() {
       this.loading.cancelOrder = true;
